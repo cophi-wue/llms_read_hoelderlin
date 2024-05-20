@@ -6,6 +6,9 @@ from langchain_core.prompts import ChatPromptTemplate
 import google.generativeai as genai
 import definitions as d
 import os
+import warnings
+
+warnings.filterwarnings("ignore")
 
 openaikey = ""
 googlekey = ""
@@ -48,6 +51,10 @@ def gpt4(temperature=0.8):
     return LLMChain(llm=llm, prompt=prompt)
     
 
+#opus can be registered directly in the notebook
+#%ai register opus anthropic-chat:claude-3-opus-20240229 
+# %ai register sonnet anthropic-chat:claude-3-sonnet-20240229 
+#%ai register haiku anthropic-chat:claude-3-haiku-20240307 
 
 ###############
 with open('openai_key.txt') as filein:
