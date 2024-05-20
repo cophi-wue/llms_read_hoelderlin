@@ -15,7 +15,7 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
+from definitions import poem_1, poem_2
 import os
 from utils import gemini, ollama3, gpt4
 
@@ -45,7 +45,7 @@ that are close together in a text, created by the same vowels but different cons
 
 ```python
 prompt = f"""Here is a definition of assonance: {assonance}. 
-Using this definition, give a full description of all assonances in this poem: \n {d.poem_1.text}. \n
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.text}. \n
 Explain in each case the assonance by repeating the words and by giving the common vowel.
 Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
 
@@ -88,7 +88,7 @@ gemini(prompt)
 
 ```python
 prompt = f"""Here is a definition of assonance: {assonance}. 
-Using this definition, give a full description of all assonances in this poem: \n {d.poem_2.text}. \n
+Using this definition, give a full description of all assonances in this poem: \n {poem_2.text}. \n
 Explain in each case the assonance by repeating the words and by giving the common vowel.
 Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
 

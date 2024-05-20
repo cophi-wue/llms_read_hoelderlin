@@ -19,14 +19,16 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
 import os
+
+from definitions import poem_1, poem_2
 from utils import gemini, ollama3, gpt4
 
 %load_ext jupyter_ai_magics
 ```
 
 ```python
+#defining aliases
 
 model =  ollama3("llama3", 0.8)
 %ai register llama3big model
@@ -63,7 +65,7 @@ Example: For the two lines “The house is green / the mouse is dead.” the out
 stressed syllables: 2-2
 
 Here is the poem: 
-{d.poem_1.text}
+{poem_1.text}
 """
 print(prompt)
 ```
@@ -120,7 +122,7 @@ Example: For the two lines “The house is green / the mouse is dead.” the out
 stressed syllables: 2-2
 
 Here is the poem: 
-{d.poem_2.text}
+{poem_2.text}
 """
 print(prompt)
 ```

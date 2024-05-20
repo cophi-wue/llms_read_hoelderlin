@@ -16,11 +16,11 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
+from definitions import poem_1, poem_2
 import os
 from utils import gemini, ollama3, gpt4
 
-%load_ext jupyter_ai_magics
+%load_ext jupyter_ai_magics 
 ```
 
 ```python
@@ -47,7 +47,7 @@ Correct answer:
 There are no rhymes in 'Hälfte des Lebens' only many assonances and consonances. 
 
 ```python
-prompt = f"""Analyze the end rhymes in this poem: \n {d.poem_1.text}. 
+prompt = f"""Analyze the end rhymes in this poem: \n {poem_1.text}. 
 
 Does the poem use end rhymes for all or most of its verses? 
 If yes, what type of rhyme scheme does the poem use? 
@@ -90,7 +90,7 @@ gemini(prompt)
 ## Unsere Toten
 
 ```python
-prompt = f"""Analyze the end rhymes in this poem: \n {d.poem_2.text}. 
+prompt = f"""Analyze the end rhymes in this poem: \n {poem_2.text}. 
 
 What type of rhyme scheme does the poem use? 
 List the rhyming words for each rhyme."""
@@ -116,7 +116,7 @@ The poem has a parallel rhyme schema (AABB). So the words 'Süd' and 'müd' are 
 
 ```python
 %%ai gpt4
-Analyze the rhymes in this poem {d.poem_2.text}. 
+Analyze the rhymes in this poem {poem_2.text}. 
 What type of rhyme scheme does the poem use? 
 List the rhyming words for each rhyme.
 

@@ -17,7 +17,7 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
+from definitions import poem_1, poem_2
 import os
 from utils import gemini, ollama3, gpt4
 
@@ -48,7 +48,7 @@ Here we elicit interpretations of sentences  or parts of sentences. We concentra
 ```python
 prompt = f"""We want to understand the following poem: 
 
-{d.poem_1.text}
+{poem_1.text}
 
 What are possible meanings of the phrase 'Das Land hänget in den See'? Describe in each case exactly what kind of landscape this phrase renders.
 """

@@ -17,7 +17,7 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
+from definitions import poem_1, poem_2
 import os
 from utils import gemini, ollama3, gpt4
 

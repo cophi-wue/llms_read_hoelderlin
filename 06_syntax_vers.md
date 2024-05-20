@@ -17,7 +17,7 @@ jupyter:
 # Configuration
 
 ```python
-import definitions as d
+from definitions import poem_1, poem_2
 import os
 from utils import gemini, ollama3, gpt4
 
@@ -57,7 +57,7 @@ prompt = f"""Analyze in the following poem, how the sentence structure and the v
 In your answer, describe first the sentence structure, secondly the vers structure and then their relationsship. 
 Answer this question for each stanza separately. 
 In a final section interprete the relationsip between the two stanzas under this perspective. 
-Here is the poem: \n {d.poem_1.text}. \n
+Here is the poem: \n {poem_1.text}. \n
 """
 
 ```
