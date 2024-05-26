@@ -2,32 +2,50 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama    
 from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 import google.generativeai as genai
-import definitions as d
 import os
 import warnings
 
 warnings.filterwarnings("ignore")
 
-openaikey = ""
-googlekey = ""
-anthropickey = ""
+class Configuration:
+    openaikey = ""
+    googlekey = ""
+    anthropickey = ""
+    temperature = None
+    candidate_count = None
+    system_prompt = None
+    google_model = None
 
 #Google Gemini 
 #model names: gemini-1.0-pro-latest gemini-1.5-pro-latest gemini-1.5-flash-latest
-#@FIXME add temperature
+
+def init_gemini():
+    #google gemini
+
+    genai.configure(api_key=config.googlekey)
+
+    generation_config = genai.GenerationConfig(candidate_count = None,
+                                               temperature = None,
+                                              )
+
+    config.google_model = genai.GenerativeModel(model_name='gemini-1.5-pro-latest',    # gemini-1.0-pro-latest gemini-1.5-pro-latest gemini-1.5-flash-latest
+                                                generation_config = generation_config
+                                               )
+
 
 def gemini(prompt):
-    response = google_model.generate_content(prompt)
+    response = config.google_model.generate_content(prompt)
     return response.text
-    
-#ollama not directly supported in jupyter-ai, so we need this custom function.
-#easy to adapt to other models than llama-3
-#llama3:8b llama3:70b
-def ollama3(model, temperature):
-    llm = Ollama(model = model,
-                temperature = temperature )
+
+
+#we use ollama to address llama3:70b 
+def ollama3():
+    llm = Ollama(model = "llama3:70b",
+                temperature = config.temperature,
+                system = config.system_prompt)
 
     prompt = PromptTemplate(
         input_variables=["question"],
@@ -37,41 +55,52 @@ def ollama3(model, temperature):
 
 
 #let us also use the new gpt4o model
-
-def gpt4(temperature=0.8):
+def gpt4():
     llm = ChatOpenAI(
         model_name = 'gpt-4o',
-        api_key = openaikey
+        api_key = config.openaikey,
+        temperature=config.temperature
     )
 
     prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are an expert in German literature. You answer the questions truthfully and short."),
+        ("system", config.system_prompt),
         ("human", "{question}"),
     ])
     return LLMChain(llm=llm, prompt=prompt)
     
 
-#opus can be registered directly in the notebook
-#%ai register opus anthropic-chat:claude-3-opus-20240229 
-# %ai register sonnet anthropic-chat:claude-3-sonnet-20240229 
-#%ai register haiku anthropic-chat:claude-3-haiku-20240307 
+def opus():
+    llm = ChatAnthropic(model='claude-3-opus-20240229',
+                        api_key=config.anthropickey,
+                        temperature=config.temperature,
+                        )
+    
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", config.system_prompt),
+        ("human", "{question}"),
+    ])
+    return LLMChain(llm=llm, prompt=prompt)
+    
+
+def settings(system_prompt, temperature, candidate_count=1):
+    config.system_prompt = system_prompt
+    config.temperature = temperature
+    config.candidate_count = candidate_count #not used atm
+
+
 
 ###############
+config = Configuration()
 with open('openai_key.txt') as filein:
-    openaikey = filein.read()
-os.environ['OPENAI_API_KEY'] = openaikey
+    config.openaikey = filein.read()
+os.environ['OPENAI_API_KEY'] = config.openaikey
 
 with open('google_key.txt') as filein:
-    googlekey = filein.read()
-os.environ['GOOGLE_API_KEY'] = googlekey
+    config.googlekey = filein.read()
+os.environ['GOOGLE_API_KEY'] = config.googlekey
 
 with open('anthropic_key.txt') as filein:
-    anthropickey = filein.read()
-os.environ['ANTHROPIC_API_KEY'] = anthropickey
-
-
-#google gemini
-genai.configure(api_key=googlekey)
-google_model = genai.GenerativeModel('gemini-1.5-pro-latest') # gemini-1.0-pro-latest gemini-1.5-pro-latest gemini-1.5-flash-latest
+    config.anthropickey = filein.read()
+os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
 
 

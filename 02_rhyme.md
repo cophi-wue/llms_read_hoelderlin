@@ -17,21 +17,33 @@ jupyter:
 
 ```python
 from definitions import poem_1, poem_2
-import os
-from utils import gemini, ollama3, gpt4
+from utils import settings, gemini, ollama3, gpt4, opus, init_gemini
+import utils
 
 %load_ext jupyter_ai_magics 
 ```
 
 ```python
+#settings
+temperature = 0.8
+system_prompt = "You are an expert in German literature and you are addressing other experts in German literature. You answer the questions truthfully and short."
 
-model =  ollama3("llama3", 0.8)
+settings(system_prompt, temperature)
+
+```
+
+```python
+#defining aliases
+init_gemini()
+
+model =  ollama3()
 %ai register llama3big model
 
 model =  gpt4()
 %ai register gpt4o model
 
-%ai register opus anthropic-chat:claude-3-opus-20240229 
+model = opus()
+%ai register opus model 
 ```
 
 
@@ -79,7 +91,7 @@ print(prompt)
 ```
 
 ```python
-gemini(prompt)
+print(gemini(prompt))
 ```
 
 ```python
@@ -134,5 +146,10 @@ List the rhyming words for each rhyme.
 ```
 
 ```python
-gemini(prompt)
+print(gemini(prompt))
+
+```
+
+```python
+
 ```
