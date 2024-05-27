@@ -56,6 +56,11 @@ model = opus()
 
 Aufgabe: Analysierem welche Silben betont sind und welche unbetont.
 
+todo: 
+
+* wie sprachspezifisch ist die Kompetenz der Modelle? Vergleich mit einem englischen Text notwendig.
+* 
+
 
 ## Hälfte des Lebens
 
