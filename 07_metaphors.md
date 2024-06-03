@@ -38,7 +38,7 @@ settings(system_prompt, temperature)
 init_gemini()
 
 model =  ollama3()
-%ai register llama3big model
+%ai register llama3 model
 
 model =  gpt4()
 %ai register gpt4o model
@@ -50,16 +50,30 @@ model = opus()
 
 # Metaphern und andere Formen der uneigentlichen Rede.
 
-```python
 
+We use a very traditional but wide definition of 'metaphor' as a figure of speech, a set of forms of non-literal speech. Here we are not interested in the differences between metaphor, metonymy, synekdoche, symbol etc. but we use the term ‘metaphor’ as a comprehensive term that encompasses these expressions. 
+
+
+```python
+metaphor = """In the following we define metaphor as a figure of speech, as a term which includes all forms of non-literal speech in which a verbum proprium is substituted with another term. So it includes phenomena which are sometimes also labeled as symbol, synekdoche, metonymy etc."""
 ```
 
 ## Hälfte des Lebens
 
+```python
+prompt = f"""Which entities or acts in the following poem can be understood as metaphors using the following definition of metaphor: {metaphor}.
+For each metaphor list your reasons, why you think this is a metaphor, give your interpretation what it stands for and your reasons for this interpretation.
+
+Here is the poem: 
+{poem_1.text}
+"""
+print(f"{prompt}")
+```
+
 ### Llama3:70b
 
 ```python
-%%ai llama3big
+%%ai llama3
 {prompt}
 ```
 
@@ -80,15 +94,29 @@ model = opus()
 ### Gemini 1.5
 
 ```python
-gemini(prompt)
+print(gemini(prompt))
 ```
 
 ## Unsere Toten
 
+```python
+prompt = f"""Which entities or acts in the following poem can be understood as metaphors using the following definition of metaphor: {metaphor}.
+For each metaphor list your reasons, why you think this is a metaphor, give your interpretation what it stands for and your reasons for this interpretation.
+
+Here is the poem: 
+{poem_2.text}
+"""
+print(f"{prompt}")
+```
+
 ### Llama3:70b
 
 ```python
-%%ai llama3big
+
+```
+
+```python
+%%ai llama3
 {prompt}
 ```
 
@@ -104,4 +132,12 @@ gemini(prompt)
 ```python
 %%ai opus
 {prompt}
+```
+
+```python
+print(gemini(f"{prompt}"))
+```
+
+```python
+
 ```
