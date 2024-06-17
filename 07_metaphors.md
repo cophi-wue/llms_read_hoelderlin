@@ -138,6 +138,8 @@ print(f"{prompt}")
 print(gemini(f"{prompt}"))
 ```
 
-```python
+# Second round 
 
+```python
+baue den prompt als lückentext, das Modell muss die Leerstelle mit einem Begriff wie 'Metapher', Metonymie etc. füllen. Der prompt enhtält definitionen und auch 
 ```

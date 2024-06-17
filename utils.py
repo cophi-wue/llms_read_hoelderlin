@@ -59,7 +59,8 @@ def gpt4():
     llm = ChatOpenAI(
         model_name = 'gpt-4o',
         api_key = config.openaikey,
-        temperature=config.temperature
+        temperature=config.temperature,
+        
     )
 
     prompt = ChatPromptTemplate.from_messages([
@@ -91,16 +92,29 @@ def settings(system_prompt, temperature, candidate_count=1):
 
 ###############
 config = Configuration()
-with open('openai_key.txt') as filein:
-    config.openaikey = filein.read()
-os.environ['OPENAI_API_KEY'] = config.openaikey
 
-with open('google_key.txt') as filein:
-    config.googlekey = filein.read()
-os.environ['GOOGLE_API_KEY'] = config.googlekey
+os.environ['OPENAI_API_KEY'] = ''
+try:
+    with open('openai_key.txt') as filein:
+        config.openaikey = filein.read()
+    os.environ['OPENAI_API_KEY'] = config.openaikey
+except FileNotFoundError:
+    print('No OpenAI key found')
+    
 
-with open('anthropic_key.txt') as filein:
-    config.anthropickey = filein.read()
-os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
+os.environ['GOOGLE_API_KEY'] = ''
+try:
+    with open('google_key.txt') as filein:
+        config.googlekey = filein.read()
+    os.environ['GOOGLE_API_KEY'] = config.googlekey
+except FileNotFoundError:
+    print('No Google key found')
 
+os.environ['ANTHROPIC_API_KEY'] = ''
+try:    
+    with open('anthropic_key.txt') as filein:
+        config.anthropickey = filein.read()
+    os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
+except FileNotFoundError:
+    print('No Anthropic key found.')
 
