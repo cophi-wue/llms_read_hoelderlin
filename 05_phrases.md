@@ -66,7 +66,7 @@ The basic structure of the poem is simple. The two stanzas, representing the two
 
 Using the phrase "Das Land hänget im See" as an example, this study aims to compare the techniques of zero-shot prompting and few-shot prompting. Zero-shot prompting refers to using a prompt to interact with the model without providing any examples or demonstrations. The zero-shot prompt directly instructs the model to perform a task without additional examples to guide it. Conversely, few-shot prompting can be employed as a technique to enable in-context learning.
 
-This experiment seeks to explore the insight provided by Liu et al.: "LMs do not make use of the metaphorical context well, instead relying on the predicted probability of interpretations alone [...]" (2022, p. 4438).
+This experiment seeks to explore the insight provided by Liu et al.: "LLMs do not make use of the metaphorical context well, instead relying on the predicted probability of interpretations alone [...]" (2022, p. 4438).
 
 ```python
 prompt = f"""We want to understand the following poem: 
@@ -167,7 +167,7 @@ gemini(prompt)
 **"Die Mauern stehn sprachlos"**
 
 
-Using the example sentence 'The walls stand speechless and cold,' we investigate how different models complete clauses with the suffix 'that is to say.' The completion function might also be measured with various temperatures: 0.2, 0.4, 0.8, and 1.
+Using the phrase 'The walls stand speechless and cold,' we investigate how different models complete clauses with the suffix 'that is to say.' The completion function might also be measured with various temperatures: 0.2, 0.4, 0.8, and 1.
 
 In the first step, the models generate a completion of the sentence without the context of the poem 'Half of Life.' In the second step, the models should choose which completion fits best in the context of the poem. The individual clauses should then be ranked.
 
