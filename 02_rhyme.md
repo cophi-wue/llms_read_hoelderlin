@@ -17,7 +17,7 @@ jupyter:
 
 ```python
 from definitions import poem_1, poem_2
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini
+from utils import settings, gemini, ollama3, gpt4, opus, init_gemini, printmd
 import utils
 
 %load_ext jupyter_ai_magics 

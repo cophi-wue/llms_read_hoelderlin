@@ -8,6 +8,9 @@ import google.generativeai as genai
 import os
 import warnings
 
+from IPython.display import Markdown, display
+
+
 warnings.filterwarnings("ignore")
 
 class Configuration:
@@ -89,6 +92,8 @@ def settings(system_prompt, temperature, candidate_count=1):
     config.candidate_count = candidate_count #not used atm
 
 
+def printmd(string):
+    display(Markdown(string))
 
 ###############
 config = Configuration()
@@ -117,4 +122,6 @@ try:
     os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
 except FileNotFoundError:
     print('No Anthropic key found.')
+
+
 
