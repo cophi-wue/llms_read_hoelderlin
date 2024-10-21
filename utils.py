@@ -100,7 +100,7 @@ config = Configuration()
 
 os.environ['OPENAI_API_KEY'] = ''
 try:
-    with open('openai_key.txt') as filein:
+    with open('key_openai.txt') as filein:
         config.openaikey = filein.read()
     os.environ['OPENAI_API_KEY'] = config.openaikey
 except FileNotFoundError:
@@ -109,7 +109,7 @@ except FileNotFoundError:
 
 os.environ['GOOGLE_API_KEY'] = ''
 try:
-    with open('google_key.txt') as filein:
+    with open('key_google.txt') as filein:
         config.googlekey = filein.read()
     os.environ['GOOGLE_API_KEY'] = config.googlekey
 except FileNotFoundError:
@@ -117,11 +117,18 @@ except FileNotFoundError:
 
 os.environ['ANTHROPIC_API_KEY'] = ''
 try:    
-    with open('anthropic_key.txt') as filein:
+    with open('key_anthropic.txt') as filein:
         config.anthropickey = filein.read()
     os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
 except FileNotFoundError:
     print('No Anthropic key found.')
 
+os.environ['GROQ_API_KEY'] = ''
+try:    
+    with open('key_anthropic.txt') as filein:
+        config.anthropickey = filein.read()
+    os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
+except FileNotFoundError:
+    print('No Groq key found.')
 
 
