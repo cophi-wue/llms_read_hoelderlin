@@ -46,9 +46,6 @@ def gemini(prompt):
 
 #we use ollama to address llama3:70b 
 def ollama3():
-    llm = Ollama(model = "llama3:70b",
-                temperature = config.temperature,
-                system = config.system_prompt)
 
     prompt = PromptTemplate(
         input_variables=["question"],
@@ -130,5 +127,9 @@ try:
     os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
 except FileNotFoundError:
     print('No Groq key found.')
+
+llm = Ollama(model = "llama3:8b",
+            temperature = config.temperature,
+            system = config.system_prompt)
 
 
