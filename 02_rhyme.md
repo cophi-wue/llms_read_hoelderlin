@@ -17,7 +17,7 @@ jupyter:
 
 ```python
 from definitions import poem_1, poem_2
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini, printmd
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 import utils
 
 %load_ext jupyter_ai_magics 
@@ -35,9 +35,6 @@ settings(system_prompt, temperature)
 ```python
 #defining aliases
 init_gemini()
-
-model =  ollama3()
-%ai register llama3big model
 
 model =  gpt4()
 %ai register gpt4o model
@@ -70,23 +67,7 @@ print(prompt)
 ```
 
 ```python
-%%ai llama3big
-{prompt}
-```
-
-```python
-%%ai gpt4o
-{prompt}
-
-```
-
-```python
 %%ai gpt4
-{prompt}
-```
-
-```python
-%%ai gpt4o 
 {prompt}
 ```
 
@@ -95,7 +76,7 @@ print(gemini(prompt))
 ```
 
 ```python
-#%%ai opus
+%%ai opus
 {prompt}
 ```
 
@@ -115,29 +96,12 @@ Correct answer:
 The poem has a parallel rhyme schema (AABB). So the words 'Süd' and 'müd' are rhymes, 'zerfetzt' and 'gesetzt' etc.  
 
 ```python
-%%ai llama3 
-{prompt}
-
-```
-
-```python
-%%ai chatgpt
-{prompt}
-
-```
-
-```python
 %%ai gpt4
 Analyze the rhymes in this poem {poem_2.text}. 
 What type of rhyme scheme does the poem use? 
 List the rhyming words for each rhyme.
 
 
-```
-
-```python
-%%ai gpt4o
-{prompt}
 ```
 
 ```python

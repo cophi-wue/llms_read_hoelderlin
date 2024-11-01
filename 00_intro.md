@@ -8,30 +8,30 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python 3 (ipykernel)
+    display_name: ds
     language: python
-    name: python3
+    name: ds
 ---
 
-<!-- #region -->
 # Introduction 
 
-This notebook contains experiments for the paper `ChatGPT reads Hölderlin. How large language models 'understand' literature.` 
-the selection of our models is based on a comparison of recent models published by Openai: https://openai.com/index/hello-gpt-4o/:
+These notebooks contain experiments for the paper `ChatGPT reads Hölderlin. How large language models 'understand' literature.` 
 
-<img src="model_comparison.png" alt="Model Comparison (by Openai)" width="600"/>
+After some pre-studies we decided not to use open source models like Llama 3.1:70b, because they didn't perform as well as the commercial models offered by OpenAI, Google and Anthropic. Llama 3.1:405b wasn't an option because we didn't have access to an infrastructure able to run it. 
 
+Our selection was based on evaluations of these models on Chatbot Arena (1.11.2024): https://lmarena.ai/ 
 
 List of LLMs used: 
 
-* Llama-3:70B    ✅
-* ChatGPT-4o     ✅   or should we use ChatGPT 4.0 
-* Gemini 1.5     ✅
-* Claude Opus    ✅
+* OpenAi: ChatGPT-4o (gpt-4o-2024-08-06)
+* Anthropic Claude 3.5 Sonnet 2024-10-22
+* Google Gemini 1.5 Pro (Sep 2024)
 
-<!-- #endregion -->
+
 
 # Two texts
+We are using two texts. One is a very well-known poem, 'Hälfte des Lebens' ('The middle of life') by Friedrich Hölderlin, a very famous German poet from the early 19th Century. There are many representations of this poems in German and English online and also many interpretations. 
+The other poem, 'Unsere Toten', by Hans Pfeifer, is unknown to Google at the time of writing and has not been published again after its first publication 1922. The author is also not a known figure in literary history. 
 
 * How well do the models know Hölderlin's text?
 * Does it matter, whether a model knows a text or not? Is the information used when producing new text about the reference text?
@@ -45,7 +45,7 @@ List of LLMs used:
 import os
 
 from definitions import poem_1, poem_2
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini, printmd
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 import utils
 
 %load_ext jupyter_ai_magics
@@ -63,9 +63,6 @@ settings(system_prompt, temperature)
 ```python
 #defining aliases
 init_gemini()
-
-model =  ollama3()
-%ai register llama3 model
 
 model =  gpt4()
 %ai register gpt4o model
@@ -99,11 +96,6 @@ What kind of news text is it? Here is the text: {t1}"""
 ```
 
 ```python
-%%ai llama3
-{prompt}
-```
-
-```python
 %%ai opus
 {prompt}
 ```
@@ -114,7 +106,7 @@ What kind of news text is it? Here is the text: {t1}"""
 ```
 
 ```python
-print(gemini(prompt))
+printmd(gemini(prompt))
 ```
 
 ## Unsere Toten
@@ -137,11 +129,6 @@ What kind of news text is it? Here is the text: {t2}
 ```
 
 ```python
-%%ai llama3
-{prompt}
-```
-
-```python
 %%ai opus
 {prompt}
 ```
@@ -152,7 +139,7 @@ What kind of news text is it? Here is the text: {t2}
 ```
 
 ```python
-print(gemini(prompt))
+printmd(gemini(prompt))
 ```
 
 ```python
