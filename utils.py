@@ -1,6 +1,4 @@
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain_community.llms import Ollama    
+from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
@@ -34,7 +32,7 @@ def init_gemini():
                                                temperature = None,
                                               )
 
-    config.google_model = genai.GenerativeModel(model_name='gemini-1.5-pro-latest',    # gemini-1.0-pro-latest gemini-1.5-pro-latest gemini-1.5-flash-latest
+    config.google_model = genai.GenerativeModel(model_name='gemini-1.5-pro-latest',    # gemini-1.0-pro-latest gemini-1.5-pro-latest gemini-1.5-flash-latest gemini-1.5-pro
                                                 generation_config = generation_config
                                                )
 
@@ -44,18 +42,13 @@ def gemini(prompt):
     return response.text
 
 
-#we use ollama to address llama3:70b 
-def ollama3():
-
-    prompt = PromptTemplate(
-        input_variables=["question"],
-        template="Answer the following question truthfully and concice. {question}",
-    )
-    return LLMChain(llm=llm, prompt=prompt)
-
-
 #let us also use the new gpt4o model
 def gpt4():
+    """call OpenAI's chatgpt 
+
+    Returns:
+        LLMChain: with model and prompt defined
+    """
     llm = ChatOpenAI(
         model_name = 'gpt-4o',
         api_key = config.openaikey,
@@ -71,7 +64,7 @@ def gpt4():
     
 
 def opus():
-    llm = ChatAnthropic(model='claude-3-opus-20240229',
+    llm = ChatAnthropic(model='claude-3-5-sonnet-20241022',    #claude-3-opus-20240229
                         api_key=config.anthropickey,
                         temperature=config.temperature,
                         )
@@ -112,6 +105,7 @@ try:
 except FileNotFoundError:
     print('No Google key found')
 
+
 os.environ['ANTHROPIC_API_KEY'] = ''
 try:    
     with open('key_anthropic.txt') as filein:
@@ -120,6 +114,7 @@ try:
 except FileNotFoundError:
     print('No Anthropic key found.')
 
+
 os.environ['GROQ_API_KEY'] = ''
 try:    
     with open('key_anthropic.txt') as filein:
@@ -127,9 +122,3 @@ try:
     os.environ['ANTHROPIC_API_KEY'] = config.anthropickey
 except FileNotFoundError:
     print('No Groq key found.')
-
-llm = Ollama(model = "llama3:8b",
-            temperature = config.temperature,
-            system = config.system_prompt)
-
-

@@ -18,7 +18,7 @@ jupyter:
 ```python
 from definitions import poem_1, poem_2
 import os
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 
 %load_ext jupyter_ai_magics
 ```
@@ -36,9 +36,6 @@ settings(system_prompt, temperature)
 #defining aliases
 init_gemini()
 
-model =  ollama3()
-%ai register llama3big model
-
 model =  gpt4()
 %ai register gpt4o model
 
@@ -52,6 +49,9 @@ model = opus()
 ```python
 assonance = """Assonance is a similarity in sound between two stressed syllables 
 that are close together in a text, created by the same vowels but different consonants. """
+
+assonance02 = """Assonance is the repetition of identical or similar phonemes in words or syllables that occur close together
+in terms of their vowel phonemes (e.g. lean green meat)"""
 ```
 
 ## Hälfte des Lebens
@@ -62,6 +62,24 @@ Using this definition, give a full description of all assonances in this poem: \
 Explain in each case the assonance by repeating the words and by giving the common vowel.
 Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
 
+prompt02 = f"""Here is a definition of assonance: {assonance02}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.text}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+prompt_en = f"""Here is a definition of assonance: {assonance}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.translations[0]}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+
+prompt02_en = f"""Here is a definition of assonance: {assonance02}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.translations[0]}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+
+prompts = [prompt, prompt02, prompt_en, prompt02_en]
 ```
 
 ```python
@@ -69,32 +87,30 @@ print(prompt)
 ```
 
 ```python
-%%ai llama3
-{prompt}
-```
 
-```python
-%%ai llama3big
-{prompt}
 ```
 
 ```python
 %%ai chatgpt
-{prompt}
+for prompt in pompts:
+    {prompt}
 ```
 
 ```python
 %%ai gpt4o
-{prompt}
+for prompt in prompts:
+    {prompt}
 ```
 
 ```python
 %%ai opus
-{prompt}
+for prompt in prompts:
+    {prompt}
 ```
 
 ```python
-print(gemini(prompt))
+for prompt in prompts:
+    printmd(gemini(prompt))
 ```
 
 ## Unsere Toten
@@ -108,27 +124,66 @@ Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the
 ```
 
 ```python
-%%ai llama3
-{prompt}
-```
-
-```python
-%%ai llama3big
-{prompt}
-```
-
-```python
 %%ai gpt4o
-{prompt}
+#{prompt}
 ```
 
 ```python
 %%ai opus
-{prompt}
+#{prompt}
 ```
 
 ```python
-print(gemini(prompt))
+printmd(gemini(prompt))
+```
+
+```python
+prompt = f"""Here is a definition of assonance: {assonance}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_2.text}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+prompt_02 = f"""Here is a definition of assonance: {assonance02}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_2.text}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+prompt_en = f"""Here is a definition of assonance: {assonance}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.translations[0]}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+
+prompt02_en = f"""Here is a definition of assonance: {assonance02}. 
+Using this definition, give a full description of all assonances in this poem: \n {poem_1.translations[0]}. \n
+Explain in each case the assonance by repeating the words and by giving the common vowel.
+Use the following form in your answer: 'Dem Nordmann schwinden die Sorgen' - the 'o' sound in 'Nordmann' and 'Sorgen' creates assonance."""
+
+
+prompts = [prompt, prompt02, prompt_en, prompt02_en]
+```
+
+```python
+%%ai chatgpt
+for prompt in pompts:
+    {prompt}
+```
+
+```python
+%%ai gpt4o
+for prompt in prompts:
+    {prompt}
+```
+
+```python
+%%ai opus
+for prompt in prompts:
+    {prompt}
+```
+
+```python
+for prompt in prompts:
+    printmd(gemini(prompt))
 ```
 
 ```python
