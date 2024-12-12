@@ -8,9 +8,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python (bedeutung)
+    display_name: Python 3 (ipykernel)
     language: python
-    name: bedeutung
+    name: python3
 ---
 
 # Configuration
@@ -655,4 +655,8 @@ Under this analysis, the poem suggests that even in the absence of a response fr
 
 ```python
 printmd(gemini(prompt))
+```
+
+```python
+
 ```
