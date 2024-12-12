@@ -22,7 +22,7 @@ jupyter:
 import os
 
 from definitions import poem_1, poem_2
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini, printmd
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 import utils
 
 %load_ext jupyter_ai_magics
@@ -40,9 +40,6 @@ settings(system_prompt, temperature)
 ```python
 #defining aliases
 init_gemini()
-
-model =  ollama3()
-%ai register llama3 model
 
 model =  gpt4()
 %ai register gpt4o model
@@ -100,13 +97,6 @@ Here is the poem:
 print(prompt)
 ```
 
-### Llama3:70b
-
-```python
-%%ai llama3
-{prompt}
-```
-
 ### GPT4o
 
 ```python
@@ -114,7 +104,7 @@ print(prompt)
 {prompt}
 ```
 
-### Opus
+### Anthropic Claude 3.5 Sonnet
 
 ```python
 %%ai opus
@@ -124,7 +114,7 @@ print(prompt)
 ### Gemini 1.5
 
 ```python
-print(gemini(prompt))
+printmd(gemini(prompt))
 
 ```
 
@@ -158,13 +148,6 @@ Here is the poem:
 print(prompt)
 ```
 
-### Llama3:70b
-
-```python
-%%ai llama3
-{prompt}
-```
-
 ### GPT4o
 
 ```python
@@ -182,7 +165,7 @@ print(prompt)
 ### Gemini 1.5
 
 ```python
-gemini(prompt)
+printmd(gemini(prompt))
 ```
 
 ## Language bias in metrical analysis
