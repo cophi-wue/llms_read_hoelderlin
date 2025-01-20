@@ -8,9 +8,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python (bedeutung)
+    display_name: Python 3 (ipykernel)
     language: python
-    name: bedeutung
+    name: python3
 ---
 
 # Configuration
@@ -621,4 +621,8 @@ Von Westen und Osten, von Nord und Süd schleppen sich nächtens viele Füße m�
 
 ```python
 printmd(gemini(prompt))
+```
+
+```python
+
 ```

@@ -62,6 +62,9 @@ todo:
 ## Hälfte des Lebens
 
 
+### Level 1: general knowledge
+
+
 Lösung: 
 Jede Strophe hat sieben Zeilen, davon drei dreihebige und vier zweihebige.
 Erste Strophe: Von den dreihebigen Versen ist in der ersten Strophe ein Paar an den Anfang gesetzt, ein einzelner an den Schluß: Die längeren dreihebigen Verse umrahmen die kürzeren. (Strauss nimmt dafür an, dass der Vers “Es Winter ist, die Blumen, und wo” drei Senkungen hintereinander hat, nämlich “ter ist, die”.)
@@ -97,28 +100,27 @@ Here is the poem:
 print(prompt)
 ```
 
-### GPT4o
+#### GPT4o
 
 ```python
 %%ai gpt4o
 {prompt}
 ```
 
-### Anthropic Claude 3.5 Sonnet
+#### Anthropic Claude 3.5 Sonnet
 
 ```python
 %%ai opus
 {prompt}
 ```
 
-### Gemini 1.5
+#### Gemini 1.5
 
 ```python
 printmd(gemini(prompt))
-
 ```
 
-### Evaluation and Discussion
+#### Evaluation and Discussion
 
 The task  actually demands two steps: first detect the scansion, second report it in a summary way. All of the models are far from being perfect in detecting the correct scansion. 
 If we just evaluate on the number of stressed syllables (looking at the patterns, not the summaries), this is the error count:<br/>
@@ -131,7 +133,80 @@ Gemini: 20(!)<br/>
 Maybe even more interesting: It is immediately obvious, that most of the LLMs are not very good in reporting their own results. With the exception of Opus all report in their summaries repeatedly *more* stressed syllables than they detected. Interestingly they never report less.
 
 
+### level 2: expert communication
+
+```python
+prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
+Here is an example of this kind of interaction between metrics and semantics:
+
+Der Tag ist grau,
+das Licht so schwer,
+und sie. Sie fehlt.
+schuldig bin ich
+
+The first three lines have two iambuses per line, but the last line begins with an accent that makes it a trochee, breaking the pattern. 
+The word that does this is "schuldig," and the change in metre emphasizes the importance of the speaker's guilt to the poem. 
+
+Can you find a similar use of metre in the following poem?
+
+{poem_1.text}
+
+"""
+
+print(prompt)
+```
+
+#### GPT4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+#### Claude Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+#### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
+### level 3: recognize implied rules and apply them to text analysis
+
+```python
+prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
+Here is an example of this kind of interaction between metrics and semantics:
+
+Der Tag ist grau,
+das Licht so schwer,
+und sie. Sie fehlt.
+schuldig bin ich
+
+The first three lines have two iambuses per line, but the last line begins with an accent that makes it a trochee, breaking the pattern. 
+The word that does this is "schuldig," and the change in metre emphasizes the importance of the speaker's guilt to the poem. 
+
+Can you find a similar use of metre in the following poem?
+
+{poem_1.text}
+
+"""
+
+print(prompt)
+```
+
+```python
+
+```
+
 ## Unsere Toten
+
+
+### level 1: 
 
 ```python
 prompt = f"""Analyze the scansion of the following poem, i.e. describe which syllables are stressed and which are not. 
@@ -148,25 +223,71 @@ Here is the poem:
 print(prompt)
 ```
 
-### GPT4o
+#### GPT4o
 
 ```python
 %%ai gpt4o
 {prompt}
 ```
 
-### Opus
+#### Claude Sonnet
 
 ```python
 %%ai opus
 {prompt}
 ```
 
-### Gemini 1.5
+#### Gemini 1.5
 
 ```python
 printmd(gemini(prompt))
 ```
+
+### level 2: expert commnication
+
+```python
+prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
+Here is an example of this kind of interaction between metrics and semantics:
+
+Der Tag ist grau,
+das Licht so schwer,
+und sie. Sie fehlt.
+schuldig bin ich
+
+The first three lines have two iambuses per line, but the last line begins with an accent that makes it a trochee, breaking the pattern. 
+The word that does this is "schuldig," and the change in metre emphasizes the importance of the speaker's guilt to the poem. 
+
+Can you find a similar use of metre in the following poem?
+
+{poem_2.text}
+
+"""
+
+print(prompt)
+```
+
+#### GPT-4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+#### Claude Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+#### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
+### level 3: new rules
+
 
 ## Language bias in metrical analysis
 
