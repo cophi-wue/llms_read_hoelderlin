@@ -34,7 +34,7 @@ settings(system_prompt, temperature)
 #defining aliases
 init_gemini()
 
-#model =  ollama3()
+model =  ollama3()
 #%ai register llama3big model
 
 model =  gpt4()
@@ -51,7 +51,7 @@ model = opus()
 ## Hölderlin: Hälfte des Lebens
 
 
-**Competence Level 1: Reproduction, Reorganization and Transfer, Reflection and Problem-Solving (A-Levels)**
+**TASK 1: General Knowledge**
 
 ```python
 #Reproduction
@@ -133,8 +133,7 @@ printmd(gemini(prompt))
 
 ```
 
-**Competence Level 2: research and expert communication (Theses and questions from Hölderlin research)**
-
+**TASK 2: Expert knowledge (Theses and questions from Hölderlin research)**
 
 ```python
 #Theoriegeleitete Interpretationen (Forschungsthese Görner 2016, S. 107 "Aber mit postkolonialer Literaturforschung bringt man es nicht weit bei der Erschließung dieses [Hölderlins] Werkes. (Post-)Strukturalistenund Dekonstruktivisten scheint Hölderlin dagegen – wennauch absichtslos – vorgearbeitet zu haben."
@@ -164,51 +163,16 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
+**TASK 3: Abstraction and Transfer**
+
+
+Counterfactual Meaning-production
+Implicit rule: Only words with an odd number of syllables carry meaning
+
 ```python
-# Forschungsdiskurse ins Verhältnis setzen, Kontexte (These Strauss S. 130) "new lyrical language"
-# Few-Shot Prompting
-prompt = f"""Analyze and interpret Hölderlin’s poem: 
+prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem Hälfte des Lebens:
 {poem_1.text}
-Respond in response to the following research question: How does Hölderlin's late work reflect the tension between the creative power of language and its inherent limitations? How does his search for a “new lyrical language” engage with themes of the numinous and the fragmentary?
 
-Below are examples of questions and high-quality responses to guide you.
-Example 1
-Question: How does Hölderlin's concept of the "numinous" influence the structure and themes of his poetry?
-Answer: Hölderlin's concept of the numinous is central to his poetic vision, manifesting as an ineffable force that both inspires and exceeds linguistic expression. Structurally, his poems often feature abrupt shifts, incomplete sentences, or ellipses, symbolizing the inability of language to fully capture transcendental experiences. Thematically, the numinous is represented through nature, divine figures, and existential dualities, such as presence and absence, or silence and expression.
-
-Example 2
-Question: How do the fragmentary aspects of Hölderlin’s late poetry contribute to the idea of a "new lyrical language"?
-Answer: The fragmentary nature of Hölderlin's late poetry can be seen as both a limitation and an innovation. On one hand, the incomplete forms reflect the breakdown of traditional linguistic structures when faced with the ineffable. On the other hand, these fragments open space for interpretive multiplicity, inviting readers to co-create meaning. This interplay embodies Hölderlin's aspiration for a "new lyrical language" that transcends conventional expression by embracing the gaps and silences within. Wilhelm Dilthey’s observation that Hölderlin’s language in his later years is marked by a “mixture of pathological traits and the genius of lyrical innovation” underscores this dynamic. The “fragments of a larger whole” mentioned by Dilthey illustrate Hölderlin’s experimentation with form and his pursuit of an unprecedented poetic style.
-
-Question: Drawing on Wilhelm Dilthey’s observation that Hölderlin’s later works reflect a “mixture of pathological traits and the genius of lyrical innovation,” analyze how the interplay between the creative power and the limitations of language manifests in Hölderlin’s late lyrical works. Consider themes of the numinous, silence, and fragmentation in your response.
-Your Answer: ?
-"""
-
-print(prompt)
-```
-
-```python
-%%ai gpt4o
-{prompt}
-```
-
-```python
-%%ai opus
-{prompt}
-```
-
-```python
-printmd(gemini(prompt))
-```
-
-**Competence Level 3: Ability to abstract**
-
-```python
-# Two examples, unknown rule "only words with an odd number of syllables carry meaning"
-
-prompt = f"""Analyze and interpret Hölderlin’s poem by applying the same analytical rule as in the examples poem 1 und poem 2:
-{poem_1.text}
-Summarize the rule in one sentence and name the relevant meaningful units (the elements that carry meaning).
 Poem 1
 Helga M. Novak (1935–2013): HÄUSER (1982)
 Landschaft Erde Natur
@@ -296,10 +260,9 @@ printmd(gemini(prompt))
 
 ```python
 # Two examples, unknown rule "the meaning of an expression lies solely in its function within an act of communication, independent of any direct connection to an external reality."
-prompt = f"""Analyze and interpret Hölderlin’s poem by applying the same analytical rule as in the examples poem 1 und poem 2:
+prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem Hälfte des Lebens:
 {poem_1.text}
 
-Summarize the rule in one sentence and name the relevant meaningful units (the elements that carry meaning).
 Poem 1
 Helga M. Novak (1935–2013): HÄUSER (1982)
 Landschaft Erde Natur
@@ -371,7 +334,7 @@ printmd(gemini(prompt))
 ## Unsere Toten
 
 
-**Competence Level 1: Reproduction, Reorganization and Transfer, Reflection and Problem-Solving (A-Levels)**
+**TASK 1: General Knowledge**
 
 ```python
 #Reproduction
@@ -456,7 +419,7 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
-**Competence Level 2: research and expert communication (Theses and questions from research)**
+**TASK 2: Expert knowledge (Theses and questions from research)**
 
 
 ```python
@@ -487,15 +450,14 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
-**Competence Level 3: Ability to abstract**
+**TASK 3: Abstraction and Transfer**
 
 
 ```python
 # Two examples, unknown rule "only words with an odd number of syllables carry meaning"
 
-prompt = f"""Analyze and interpret Hölderlin’s poem by applying the same analytical rule as in the examples poem 1 und poem 2:
-{poem_1.text}
-Summarize the rule in one sentence and name the relevant meaningful units (the elements that carry meaning).
+prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the following poem 3 "Unsere Toten":
+
 Poem 1
 Helga M. Novak (1935–2013): HÄUSER (1982)
 Landschaft Erde Natur
@@ -563,6 +525,10 @@ The repetition of "Klage" (lament) and the presence of "Frage" (question) sugges
 
 The Divine as Silent Witness:
 The speaker’s "Weinen" (crying) and hidden emotions are juxtaposed with their connection to God ("deine Liebe Gott versteht"). This relationship introduces a spiritual dimension to the speaker’s suffering, where even unspoken sorrow is acknowledged.
+
+Poem 3: 
+"Unsere Toten"
+Von Westen und Osten, von Nord und Süd schleppen sich nächtens viele Füße müd, Füße, vom Wandern wund und zerfetzt, langsam bedächtig zur Erde gesetzt, müh'n sich im zitternden Mondenschein rastlos tief nach Deutschland hinein. Und wer mit lauschendem Ohr noch wacht hört sie in jedweder werdenden Nacht, hört dies Schlurfen so müde und schwer, hört eine Klage voll wilder Begehr, eine Klage schmerzzerfressen: nur nicht vergessen! Uns nicht vergessen!
 """
 
 ```
@@ -583,12 +549,8 @@ printmd(gemini(prompt))
 
 ```python
 ## Two examples, unknown rule "the meaning of an expression lies solely in its function within an act of communication, independent of any direct connection to an external reality."
-prompt = f"""Analyze and interpret Hölderlin’s poem by applying the same analytical rule as in the examples poem 1 und poem 2:
+prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the following poem 3 "Unsere Toten":
 
-Von Westen und Osten, von Nord und Süd schleppen sich nächtens viele Füße müd, Füße, vom Wandern wund und zerfetzt, langsam bedächtig zur Erde gesetzt, müh'n sich im zitternden Mondenschein rastlos tief nach Deutschland hinein. Und wer mit lauschendem Ohr noch wacht hört sie in jedweder werdenden Nacht, hört dies Schlurfen so müde und schwer, hört eine Klage voll wilder Begehr, eine Klage schmerzzerfressen: nur nicht vergessen! Uns nicht vergessen!
-
-
-Summarize the rule in one sentence and name the relevant meaningful units (the elements that carry meaning).
 Poem 1
 Helga M. Novak (1935–2013): HÄUSER (1982)
 Landschaft Erde Natur
@@ -640,6 +602,10 @@ Interpretation from poem 2:
 The poem emerges as an exploration of solitude and sorrow, where the act of communication itself—through lament, introspection, and spiritual dialogue—becomes the primary source of meaning. The expressions function to externalize the speaker’s inner turmoil, transforming nature into a reflective space and God into an empathetic listener.
 
 Under this analysis, the poem suggests that even in the absence of a response from the external world, the act of expressing sorrow has intrinsic value, as it connects the speaker to a spiritual dimension and validates their inner experience. This highlights the resilience of the human spirit in finding meaning through communication, even in the face of silence and hopelessness.
+
+Poem 3: 
+"Unsere Toten"
+Von Westen und Osten, von Nord und Süd schleppen sich nächtens viele Füße müd, Füße, vom Wandern wund und zerfetzt, langsam bedächtig zur Erde gesetzt, müh'n sich im zitternden Mondenschein rastlos tief nach Deutschland hinein. Und wer mit lauschendem Ohr noch wacht hört sie in jedweder werdenden Nacht, hört dies Schlurfen so müde und schwer, hört eine Klage voll wilder Begehr, eine Klage schmerzzerfressen: nur nicht vergessen! Uns nicht vergessen!
 """
 ```
 
