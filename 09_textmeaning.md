@@ -8,9 +8,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python 3 (ipykernel)
+    display_name: Python (bedeutung)
     language: python
-    name: python3
+    name: bedeutung
 ---
 
 # Configuration
@@ -168,6 +168,7 @@ printmd(gemini(prompt))
 
 Counterfactual Meaning-production
 Implicit rule: Only words with an odd number of syllables carry meaning
+These two poems were part of the A-level exams in the federal state of Lower Saxony 
 
 ```python
 prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem Hälfte des Lebens:
@@ -196,7 +197,10 @@ siehst du die gelbe verrostete Bank
 auf der werde ich sitzen
 wenn ich nicht weiter weiß
 also für immer wie eine
-der die Augen übergegangen sind
+der die Augen übergegangen sind.
+
+Aus: Helga M. Novak: HÄUSER. In: Dies.: Poesiealbum 320. Auswahl von Rita Jorek.
+Wilhemshorst: Märkischer Verlag 2015, S. 23.
 
 Interpretation of the poem 1: 
 The poem reveals key themes of isolation, purity, and existential yearning. The analysis highlights several layers of meaning:
@@ -229,6 +233,9 @@ Herz, dein heimlich Weinen geht,
 Deine Liebe Gott versteht,
 Deine tiefe, hoffnungslose!
 
+Aus: Nikolaus Lenau: Einsamkeit. In: Ders.: Werke und Briefe. Historisch-kritische Gesamtausgabe.
+Band 2. Neuere Gedichte und lyrische Nachlese. Hrsg. von Antal Mádl. Wien: Deuticke und Klett Cotta 1995, S. 76.
+
 Interpreation of Poem 2:
 The poem creates a thematic pattern focused on the interplay between solitude, unanswered longing, and emotional expression within nature. Key interpretative insights include:
 
@@ -260,6 +267,7 @@ printmd(gemini(prompt))
 
 ```python
 # Two examples, unknown rule "the meaning of an expression lies solely in its function within an act of communication, independent of any direct connection to an external reality."
+# 
 prompt = f"""Read the following interpretations of poem 1 and poem 2. Then infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem Hälfte des Lebens:
 {poem_1.text}
 
@@ -286,7 +294,10 @@ siehst du die gelbe verrostete Bank
 auf der werde ich sitzen
 wenn ich nicht weiter weiß
 also für immer wie eine
-der die Augen übergegangen sind
+der die Augen übergegangen sind.
+
+Aus: Helga M. Novak: HÄUSER. In: Dies.: Poesiealbum 320. Auswahl von Rita Jorek.
+Wilhemshorst: Märkischer Verlag 2015, S. 23.
 
 Interpretation from poem 1: 
 Under this analytical rule, the poem is understood as a communicative act between the speaker and themselves or an imagined other, rather than a description of an external world. The expressions function to construct an internal landscape where themes of isolation, paradoxical love, and existential endurance are explored. The speaker builds symbolic spaces (house, bench) to house their emotional turmoil, creating a self-contained dialogue within a desolate yet meaningful internal world. This interpretation highlights the poem’s focus on the subjective function of language and its power to shape emotional reality.
@@ -309,6 +320,9 @@ Nicht verloren hier im Moose,
 Herz, dein heimlich Weinen geht,
 Deine Liebe Gott versteht,15
 Deine tiefe, hoffnungslose!
+
+Aus: Nikolaus Lenau: Einsamkeit. In: Ders.: Werke und Briefe. Historisch-kritische Gesamtausgabe.
+Band 2. Neuere Gedichte und lyrische Nachlese. Hrsg. von Antal Mádl. Wien: Deuticke und Klett Cotta 1995, S. 76.
 
 Interpretation from poem 2:
 The poem emerges as an exploration of solitude and sorrow, where the act of communication itself—through lament, introspection, and spiritual dialogue—becomes the primary source of meaning. The expressions function to externalize the speaker’s inner turmoil, transforming nature into a reflective space and God into an empathetic listener.
@@ -621,8 +635,4 @@ Von Westen und Osten, von Nord und Süd schleppen sich nächtens viele Füße m�
 
 ```python
 printmd(gemini(prompt))
-```
-
-```python
-
 ```
