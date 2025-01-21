@@ -8,9 +8,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python (bedeutung)
+    display_name: ds
     language: python
-    name: bedeutung
+    name: ds
 ---
 
 # Configuration
@@ -33,9 +33,6 @@ settings(system_prompt, temperature)
 ```python
 #defining aliases
 init_gemini()
-
-model =  ollama3()
-#%ai register llama3big model
 
 model =  gpt4()
 %ai register gpt4o model

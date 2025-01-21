@@ -8,9 +8,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.2
   kernelspec:
-    display_name: Python (bedeutung)
+    display_name: ds
     language: python
-    name: bedeutung
+    name: ds
 ---
 
 # Configuration
@@ -481,4 +481,8 @@ A high-pitched, joyful sound that signifies forward propulsion and exhilaration.
 
 ```python
 printmd(gemini(prompt))
+```
+
+```python
+
 ```
