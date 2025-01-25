@@ -19,7 +19,7 @@ jupyter:
 ```python
 from definitions import poem_1, poem_2
 import os
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini, printmd
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 
 %load_ext jupyter_ai_magics
 ```
@@ -37,9 +37,6 @@ settings(system_prompt, temperature)
 #defining aliases
 init_gemini()
 
-model =  ollama3()
-%ai register llama3 model
-
 model =  gpt4()
 %ai register gpt4o model
 
@@ -51,84 +48,117 @@ model = opus()
 # Metaphors and other forms of figurative speech.
 
 
-We use a very traditional but wide definition of 'metaphor' as a figure of speech, a set of forms of non-literal speech. Here we are not interested in the differences between metaphor, metonymy, synekdoche, symbol etc. but we use the term ‘metaphor’ as a comprehensive term that encompasses these expressions. 
+We are interested in local figures of speech like metaphors, metonymies, synekdoches, symbols. 'Local' because their scope is usually just one entity or one type of entity, not the whole text. 
+
+
+
 
 
 ```python
-metaphor = """In the following we define metaphor as a figure of speech, 
-as a term which includes all forms of non-literal speech 
-in which a verbum proprium (what the thing is really called) is 
-substituted with another term. 
-So it includes phenomena which are sometimes also labeled 
-as symbol, synekdoche, metonymy etc."""
+figurative_speech = """All forms of non-literal speech in which a verbum proprium (what the thing is really called) is substituted with another term. 
+So it includes phenomena which are sometimes also labeled as metaphor, synekdoche, metonymy,  symbols etc. """
 ```
-
-# Experiment 1
-We ask directly for forms of figurative speech
-
 
 ## Hälfte des Lebens
 
+
+### Level 1: General knowledge
+We ask directly for forms of figurative speech. 
+
+There is no real ground here and the interpretations of the poem have different descriptions of this aspect. 
+All agree that the 'Schwäne' are a symbol, and most agree that the landscape and its element in the first stanza and the artefacts in the second stanza are symbols, that is they cannot translated into a 'literal' meaning but are signs in a broader sense.
+
+One aspect which has been debated is the phrase "hänget / [...] / Das Land in den See," What does it mean on the literal level (hard to understand: does it describe a peninsula - seen from above - or how the twigs full of fruits touch the water) and what is its symbolic meaning (easier to understand). 
+
+
 ```python
-prompt = f"""Which entities or acts in the following poem can be understood as metaphors using the following definition of metaphor: {metaphor}.
-For each metaphor list your reasons, why you think this is a metaphor, give your interpretation what it stands for and your reasons for this interpretation.
+prompt = f"""Which entities or acts in the following poem can be understood as figurative speech using the following definition : {figurative_speech}.
+For each instance of figurative_speech list your reasons, why you think this is one, give your interpretation what it stands for and your reasons for this interpretation.
 
 Here is the poem: 
 {poem_1.text}
+
+List all of them.
 """
 print(f"{prompt}")
 ```
 
-### Llama3:70b
-
-```python
-%%ai llama3
-{prompt}
-```
-
-### GPT4o
+#### GPT4o
 
 ```python
 %%ai gpt4o
 {prompt}
 ```
 
-### Opus
+#### Gemini 1.5
+
+```python
+printmd(gemini(prompt))
+```
+
+#### Sonnet
 
 ```python
 %%ai opus
 {prompt}
 ```
 
-### Gemini 1.5
+### Expert Knowledge
 
 ```python
-printmd(gemini(prompt))
+
+```
+
+GPT-4o
+
+```python
+
+```
+
+Gemini 1.5
+
+```python
+
+```
+
+Sonnet 3.5
+
+```python
+
 ```
 
 ## Unsere Toten
 
 ```python
-prompt = f"""Which entities or acts in the following poem can be understood as figurative speech 
-using the following definition of figurative speech: {metaphor}.
-For each occurrence of figurative speech list your reasons, why you think this is figurative speech, 
-give your interpretation what it stands for and your reasons for this interpretation.
+prompt = f"""Which entities or acts in the following poem can be understood as figurative speech using the following definition : {figurative_speech}.
+For each instance of figurative_speech list your reasons, why you think this is one, give your interpretation what it stands for and your reasons for this interpretation.
 
 Here is the poem: 
 {poem_2.text}
+
+List all of them.
 """
 print(f"{prompt}")
 ```
 
-### Llama3:70b
+#### GPT4-o
 
 ```python
-%%ai llama3
+%%ai gpt4o
 {prompt}
 ```
 
-```python
+#### Gemini 1.5
 
+```python
+printmd(gemini(prompt))
+```
+
+#### Sonnet 
+
+```python
+%%ai opus
+{prompt}
 ```
 
 # Experiment 2

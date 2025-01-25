@@ -44,7 +44,7 @@ model = opus()
 ```
 
 
-# Reim
+# Rhyme
 
 
 
@@ -52,41 +52,68 @@ model = opus()
 ## Hälfte des Lebens
 
 
+### Level 1: General Knowledge
+
+
+We are just asking for the detection of rhymes in the poem. 
+First we want to know whether there are any (end) rhymes. If yes, which words are rhymed and finally what kind of rhyme schema there is, like ABAB or AABB or ABBA etc.
+
 Correct answer: 
 There are no rhymes in 'Hälfte des Lebens' only many assonances and consonances. 
 
 ```python
-prompt = f"""Analyze the end rhymes in this poem: \n {poem_1.text}. 
+prompt = f"""Analyze the (end) rhymes in this poem: \n {poem_1.text}. 
 
-Does the poem use end rhymes for all or most of its verses? 
-If yes, what type of rhyme scheme does the poem use? 
-If the poem uses end rhymes, list the rhyming words for each rhyme."""
+Does the poem use rhymes for all or most of its verses? 
+If yes, what words are rhymed and what type of rhyme scheme does the poem use (like AABB or ABAB or ABBA etc.)? 
+"""
 
 print(prompt)
 
 ```
+
+#### GPT-4o
 
 ```python
 %%ai gpt4
 {prompt}
 ```
 
+#### Gemini 1.5
+
 ```python
-print(gemini(prompt))
+printmd(gemini(prompt))
 ```
+
+#### Claude Sonnet
 
 ```python
 %%ai opus
 {prompt}
 ```
 
+### Level 2: Expert Knowledge
+
+
+### Level 3: Abstraction and Transfer
+
+
 ## Unsere Toten
 
-```python
-prompt = f"""Analyze the end rhymes in this poem: \n {poem_2.text}. 
 
-What type of rhyme scheme does the poem use? 
-List the rhyming words for each rhyme."""
+### Level 1: General Knowledge
+
+We are just asking for the detection of rhymes in the poem. 
+
+Correct answer: 
+
+
+```python
+prompt = f"""Analyze the (end) rhymes in this poem: \n {poem_2.text}. 
+
+Does the poem use rhymes for all or most of its verses? 
+If yes, what words are rhymed and what type of rhyme scheme does the poem use (like AABB or ABAB or ABBA etc.)? 
+"""
 
 print(prompt)
 
@@ -95,24 +122,33 @@ print(prompt)
 Correct answer: 
 The poem has a parallel rhyme schema (AABB). So the words 'Süd' and 'müd' are rhymes, 'zerfetzt' and 'gesetzt' etc.  
 
+
+#### Gpt-4o
+
 ```python
 %%ai gpt4
-Analyze the rhymes in this poem {poem_2.text}. 
-What type of rhyme scheme does the poem use? 
-List the rhyming words for each rhyme.
-
+{prompt}
 
 ```
+
+#### Gemini 1.5
+
+```python
+printmd(gemini(prompt))
+
+```
+
+#### Sonnet 
 
 ```python
 %%ai opus
 {prompt}
 ```
 
-```python
-print(gemini(prompt))
+### Level 2: Expert Knowledge
 
-```
+
+### Level 3: Abstraction and Transfer
 
 ```python
 

@@ -48,7 +48,7 @@ model = opus()
 %ai register opus model 
 ```
 
-# Metrik
+# Metrics
 
 
 Aufgabe: Analysierem welche Silben betont sind und welche unbetont.
@@ -62,13 +62,18 @@ todo:
 ## Hälfte des Lebens
 
 
-### Level 1: general knowledge
+### Level 1: General Knowledge
 
 
-Lösung: 
-Jede Strophe hat sieben Zeilen, davon drei dreihebige und vier zweihebige.
-Erste Strophe: Von den dreihebigen Versen ist in der ersten Strophe ein Paar an den Anfang gesetzt, ein einzelner an den Schluß: Die längeren dreihebigen Verse umrahmen die kürzeren. (Strauss nimmt dafür an, dass der Vers “Es Winter ist, die Blumen, und wo” drei Senkungen hintereinander hat, nämlich “ter ist, die”.)
-Zweite Strophe beginnt ebenfalls mit zwei dreihebigen Versen. Der dritte dreihebige Vers ist der vorletzte. 
+On this level we just ask about the metrical structure of the poem.
+
+Solution(s): 
+Each stanza has seven lines, of which three lines have three stresses and four have two.
+First stanza: Of the lines with three stresses in the first stanza, a pair is placed at the beginning, and a single one at the end: The longer lines with three stresses frame the shorter ones. (Strauss assumes that the line "Es Winter ist, die Blumen, und wo" has three consecutive unstressed syllables, namely "ter ist, die".)
+
+Second stanza also begins with two three-stressed lines. The third three-stressed line is the penultimate one.
+In short:
+
 1. Str: 3-3-2-2-2-2-3
 2. Str: 3-3-2-2-2-3-2
 
@@ -122,18 +127,18 @@ printmd(gemini(prompt))
 
 #### Evaluation and Discussion
 
-The task  actually demands two steps: first detect the scansion, second report it in a summary way. All of the models are far from being perfect in detecting the correct scansion. 
-If we just evaluate on the number of stressed syllables (looking at the patterns, not the summaries), this is the error count:<br/>
-Llama3: 6<br/>
-GPTo: 5<br/>
-Opus: 4<br/>
-Gemini: 20(!)<br/>
+The task  actually demands two steps: first detect the scansion, second report it in a summary way. Some of models have some difficulties to detect the correct scansion: Sonnet get's it right most of the time, while GPT-4o and Gemini 1.5 make some mistakes. 
+If we just evaluate on the number of stressed syllables (looking at the patterns, not the summaries), this is the error count (using a very strict error concept where every missing or added stress is counted as one error):<br/>
+
+GPT 4o: 7<br/>
+Sonnet: 0<br/>
+Gemini: 5<br/>
 
 <br/>
-Maybe even more interesting: It is immediately obvious, that most of the LLMs are not very good in reporting their own results. With the exception of Opus all report in their summaries repeatedly *more* stressed syllables than they detected. Interestingly they never report less.
+Even more interesting: It is immediately obvious, that most of the LLMs are not very good in reporting their own results, that is their summaries deviate from the stress patterns they report. In their summaries they repeatedly report *more* stressed syllables than they detected. Interestingly they never report less. This is even true for Sonnet, which got the stress patterns right. We speculate that the models have no difficulty to produce any sequence of symbols, but they may have problems with remembering symbols which are not tokens. 
 
 
-### level 2: expert communication
+### level 2: Expert Knowledge
 
 ```python
 prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
@@ -176,7 +181,7 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
-### level 3: recognize implied rules and apply them to text analysis
+### level 3: Abstraction and Transfer
 
 ```python
 prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
@@ -206,7 +211,25 @@ print(prompt)
 ## Unsere Toten
 
 
-### level 1: 
+### level 1: General Knowledge
+
+The metrical structure of this poem is either quite challening to describe or ver simple, because it shows so many variations, but the variations can be explained by the underlying rule. The reason for this is: the poem uses free knittelverses. They have four stressed syllables but allow upbeats and free fillings. Vers 11 and 12 change their structure most prominently because they switch from the pattern unstressed syllable + a stressed syllabe at the end which is used throughout the poem to stressed + unstressed, a change which is emphasized by the fact that these are also rhyme words. 
+
+
+```
+1) -/--/--/-/
+2) /--/---/-/
+3) /--/-/--/
+4) /--/--/--/
+5) /--/--/-/
+6) /-/-/--/
+7) -/-/--/-/
+8) /--/--/--/
+9) /-/--/--/
+10) /--/--/--/
+11) /-/-/-/-
+12) -/-/-/--/-
+```
 
 ```python
 prompt = f"""Analyze the scansion of the following poem, i.e. describe which syllables are stressed and which are not. 
@@ -243,7 +266,7 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
-### level 2: expert commnication
+### Level 2: Expert Knowledge
 
 ```python
 prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
@@ -286,7 +309,7 @@ print(prompt)
 printmd(gemini(prompt))
 ```
 
-### level 3: new rules
+### Level 3: Abstraction and Transfer
 
 
 ## Language bias in metrical analysis
