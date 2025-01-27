@@ -103,31 +103,52 @@ printmd(gemini(prompt))
 {prompt}
 ```
 
-### Expert Knowledge
+### Level 2: Expert Knowledge
+
+
+We want to discuss how the meaning of figurative language in the poem changes, when we add some historical information. In the case of Hälfte des Lebens, we add the information, that Hölderlin was a great admirer of antiquity and its literature and that in the old greek and latin literature the swan was often a metaphor for the poet.
 
 ```python
+prompt = f"""The German poet Friedrich Hölderlin wrote the following poem around 1800: 
 
+{poem_1.text}
+
+Interpret the meaning of the swans in the context of the poem.
+
+How does this interpretation change, when we know that Hölderlin was a great admirer of antiquity? 
+He looked up to its literature as a model for his own writing. In antiquity, the swan is often 
+regarded as a symbol for the poet. 
+How does this knowledge change the interpretation of the swans and the poem?
+"""
+
+print(prompt)
 ```
 
-GPT-4o
+#### GPT-4o
 
 ```python
-
+%%ai gpt4o
+{prompt}
 ```
 
-Gemini 1.5
+#### Gemini 1.5
 
 ```python
-
+print(gemini(prompt))
 ```
 
-Sonnet 3.5
+#### Sonnet 3.5
 
 ```python
-
+%%ai opus
+{prompt}
 ```
 
 ## Unsere Toten
+
+```python
+
+```
 
 ```python
 prompt = f"""Which entities or acts in the following poem can be understood as figurative speech using the following definition : {figurative_speech}.
@@ -161,24 +182,47 @@ printmd(gemini(prompt))
 {prompt}
 ```
 
+### Level 2: Expert Knowledge
+
+```python
+prompt = f"""Interpret the meaning of 'Germany' in the following poem which bears the title 'Unsere Toten': 
+
+{poem_2.text}
+
+The first and only publication of the poem was in the book "Die deutsche Balladen-Chronik. Ein Balladenbuch von deutscher Geschichte und deutscher Art. Dortmund: Ruhfus 1922"  How does this information 
+change your understanding of the word 'Germany' and its meaning in the context of the poem?
+
+"""
+
+print(prompt)
+```
+
+#### Gpt4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+#### Gemini 1.5
+
+```python
+printmd(gemini(prompt))
+```
+
+#### Sonnet 
+
+```python
+%%ai opus
+{prompt}
+```
+
 # Experiment 2
 
 How does the addition of specific knowledge - what the swans stood for in antiquity and that Hölderlin had profound knowledge of the antiquity and that classic literature provided the model for his literature - change the interpretation? 
 
 ```python
-prompt = f"""The German poet Friedrich Hölderlin wrote the following poem around 1800: 
 
-{poem_1.text}
-
-Interpret the meaning of the swans in the context of the poem.
-
-How does this interpretation change when we know that Hölderlin was a great admirer of antiquity? 
-He looked up to its literature as a model for his own writing. In antiquity, the swan is often 
-regarded as a symbol for the poet. 
-How does this knowledge change the interpretation of the swans and the poem?
-"""
-
-print(prompt)
 ```
 
 Expectations:

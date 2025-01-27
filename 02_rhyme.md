@@ -95,6 +95,11 @@ printmd(gemini(prompt))
 ### Level 2: Expert Knowledge
 
 
+As there is no rhyme in HdL, there is no meaningful expert question to be asked (False answer would probably mostly be false because the falsely detect rhymes).
+
+
+
+
 ### Level 3: Abstraction and Transfer
 
 
@@ -148,8 +153,40 @@ printmd(gemini(prompt))
 ### Level 2: Expert Knowledge
 
 
-### Level 3: Abstraction and Transfer
+Can we detect an additional semantic structure, an additional layer of meaning, if we just look at the rhyme words of the poem? What would be plausible interpretative strategies and do they work (i.e. are they productive, do they produce any additional insights) for this poem?
+
+Expected answer: Two possible directions of analysis could be expected: 
+1) one follows the meaning which is etablished by pairing words in a rhyme. There is not a lot of this happening in the first half, but in the second half, we see that 'wacht' and 'Nacht' belong somewhat to opposites, similarly 'schwer' (which recalls the 'müd' (tired)) and 'Begehr'. Finally the last rhyme 'zerfressen' (eaten away) and vergessen (forgotten) implies an even stronger semantic relation, but not of opposites, rather both imply that there has been something which is no getting lost in a painful process. 
+2) The second looks at the vowels of the rhymes and connects them to the tone and mood of the poem. We cannot detect anything which would be the basis for an interesting and productive description. 
+
+```python
+prompt = f"""Describe at least two strategies to analyze the rhyme structure of poems in relation to the meaning of the poem or parts of the poem. 
+Then analyze whether they produce interesting insights when applied to the following poem:
+
+{poem_2.text}. 
+
+"""
+
+print(prompt)
+
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+printmd(gemini(prompt))
+```
+
+```python
+%%ai opus
+{prompt}
+```
 
 ```python
 
 ```
+
+### Level 3: Abstraction and Transfer

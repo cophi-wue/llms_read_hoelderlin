@@ -51,14 +51,6 @@ model = opus()
 # Metrics
 
 
-Aufgabe: Analysierem welche Silben betont sind und welche unbetont.
-
-todo: 
-
-* wie sprachspezifisch ist die Kompetenz der Modelle? Vergleich mit einem englischen Text notwendig.
-* 
-
-
 ## Hälfte des Lebens
 
 
@@ -296,6 +288,12 @@ print(prompt)
 {prompt}
 ```
 
+#### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
 #### Claude Sonnet
 
 ```python
@@ -303,7 +301,49 @@ print(prompt)
 {prompt}
 ```
 
-#### Gemini
+#### another question
+The  Knittelvers is a German vers structure which may be harder to detect, because it only counts the stressed syllables and ignores the unstressed syllables. In other words, the Knittelvers is defined by its free filling of unstressed syllables (variable number of syllables). 
+
+```python
+prompt = f"""This poem follows a  German verse meter. Which one?
+
+{poem_2.text}"""
+
+print(prompt)
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+%%ai opus
+{prompt}
+```
+
+```python
+printmd(gemini(prompt))
+```
+
+```python
+# a veriation of the last question.
+prompt = f"""The following poem follows a verse meter. Which one?
+
+{poem_2.text}"""
+
+print(prompt)
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+%%ai opus
+{prompt}
+```
 
 ```python
 printmd(gemini(prompt))
@@ -379,11 +419,6 @@ These two closing lines start with trochees, feet that go DUM-da. That front-loa
 (Source: https://www.litcharts.com/poetry/christina-rossetti/in-an-artist-s-studio)
 
 <!-- #endraw -->
-
-```python
-%%ai llama3
-{prompt}
-```
 
 ```python
 %%ai gpt4o
