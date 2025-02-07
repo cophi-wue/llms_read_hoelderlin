@@ -6,11 +6,11 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.16.2
+      jupytext_version: 1.16.6
   kernelspec:
-    display_name: ds
+    display_name: llm_env
     language: python
-    name: ds
+    name: llm_env
 ---
 
 
@@ -43,6 +43,7 @@ init_gemini()
 model =  gpt4()
 %ai register gpt4o model
 
+# note that "opus" always refers to Anthropic's model "sonnet".
 model = opus()
 %ai register opus model 
 ```
@@ -52,6 +53,8 @@ model = opus()
 
 ```python
 # General understanding, regarding the concept of "Hälfte" in relation to "life"
+
+
 
 prompt = f"""We want to understand the following poem: 
 
@@ -63,6 +66,10 @@ Describe whether the concept 'Hälfte' refers to aspects of life as individual a
 
 print(prompt)
 ```
+
+## Task 1: Student level: 
+### 1.a Assignment of the title’s meaning supported by two alternatives being provided
+
 
 ### Expected answers
 - expected prima facie answer (intuitive answer) that is usually rejected in scholarly interpretations: youth and seniority
@@ -104,7 +111,8 @@ The concept of "Hälfte" refers to both aspects of individual age and different 
 {prompt}
 ```
 
-### Opus
+### Anthropic's Sonnet 
+- here referred to as: "opus"
 
 ```python
 %%ai opus
@@ -116,6 +124,8 @@ The concept of "Hälfte" refers to both aspects of individual age and different 
 ```python
 printmd(gemini(prompt))
 ```
+
+### 1.b Operating with special 'meaning-troubles' of the title
 
 ```python
 # Problems with the singular in the title: Hälfte (one half). To which half does the poem itself refer?
@@ -145,6 +155,9 @@ printmd(gemini(prompt))
 %%ai opus
 {prompt}
 ```
+
+##  Task 2: Expert conversation: 
+### Operating with context, here in terms of intertextuality:
 
 ```python
 # Intertextuality, relative to a later work:
@@ -180,11 +193,121 @@ printmd(gemini(prompt))
 {prompt}
 ```
 
+# Task 3: Abstraction-Transfer: 
+## Instance based rule induction
+
+### 3.a Rule application for  the poems to be analyzed:
+
+Implicit Rule: (1) Seek a most intiutive title. (2) Estimate the difference between the most intuitive and the actual title. (3) Give an interpretation of the poem that assumes, that the distance between the intuitive and the actual title is important to the meaning of the poem.
+
+```python
+prompt = f"""
+
+Infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem with the title "Hälfte des Lebens": 
+{poem_1.text}.
+
+According to my first reading, the most straightforward title for the following poem would be "Lorelei". The actual title is "Waldgespräch", however.
+The difference between the expectable and the actual title of the poem shows that the title gives a very specific hint as to the meaning of the poem. 
+In this case, I maintain, the title shall reveal a strong connection between romanticism (title) and horror (content of the poem).
+
+Here is the poem: Waldgespräch (1815)
+Es ist schon spät, es wird schon kalt,
+Was reit’st du einsam durch den Wald?
+Der Wald ist lang, du bist allein,
+Du schöne Braut! Ich führ’ dich heim!
+
+„Groß ist der Männer Trug und List,
+Vor Schmerz mein Herz gebrochen ist,
+Wohl irrt das Waldhorn her und hin,
+O flieh! Du weißt nicht, wer ich bin.“
+
+So reich geschmückt ist Roß und Weib,
+So wunderschön der junge Leib,
+Jetzt kenn’ ich dich – Gott steh’ mir bei!
+Du bist die Hexe Lorelei.
+
+„Du kennst mich wohl – von hohem Stein
+Schaut still mein Schloß tief in den Rhein.
+Es ist schon spät, es wird schon kalt,
+Kommst nimmermehr aus diesem Wald!“
+
+"""
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+printmd(gemini(prompt))
+```
+
+```python
+%%ai opus
+{prompt}
+```
+
+### 3.b Transfer with counterfactual title:
+
+```python
+# Now with counterfactual title
+
+prompt = f"""
+
+Infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem with the title "Des Dichters Leben": 
+{poem_1.text}.
+
+According to my first reading, the most straightforward title for the following poem would be "Lorelei". The actual title is "Waldgespräch", however.
+The difference between the expectable and the actual title of the poem shows that the title gives a very specific hint as to the meaning of the poem. 
+In this case, I maintain, the title shall reveal a strong connection between romanticism (title) and horror (content of the poem).
+
+Here is the poem: Waldgespräch (1815)
+Es ist schon spät, es wird schon kalt,
+Was reit’st du einsam durch den Wald?
+Der Wald ist lang, du bist allein,
+Du schöne Braut! Ich führ’ dich heim!
+
+„Groß ist der Männer Trug und List,
+Vor Schmerz mein Herz gebrochen ist,
+Wohl irrt das Waldhorn her und hin,
+O flieh! Du weißt nicht, wer ich bin.“
+
+So reich geschmückt ist Roß und Weib,
+So wunderschön der junge Leib,
+Jetzt kenn’ ich dich – Gott steh’ mir bei!
+Du bist die Hexe Lorelei.
+
+„Du kennst mich wohl – von hohem Stein
+Schaut still mein Schloß tief in den Rhein.
+Es ist schon spät, es wird schon kalt,
+Kommst nimmermehr aus diesem Wald!“
+
+"""
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+printmd(gemini(prompt))
+```
+
+```python
+%%ai opus
+{prompt}
+```
+
 ## Unsere Toten
 
 
 
 ```python
+# Task 1: Student level: 
+# Task 1.a: Assignment of the title’s meaning supported by a specification of some 'meaning-troubles' with the title:
+
 prompt = f"""We want to understand the following poem: 
 
 {poem_2.text}
@@ -236,7 +359,7 @@ The title "Unsere Toten" refers to the dead who belong to a particular collectiv
 {prompt}
 ```
 
-### Opus
+### Anthropic’s Sonnet (opus)
 
 ```python
 %%ai opus
@@ -246,6 +369,8 @@ The title "Unsere Toten" refers to the dead who belong to a particular collectiv
 ```python
 printmd(gemini({prompt}))
 ```
+
+#  Task 2: Expert conversation: Operating with context, here in terms of intertextuality
 
 ```python
 # using relevant or irrelevant context, here an instance indicating a possible context
@@ -273,6 +398,115 @@ printmd(gemini({prompt}))
 ```python
 %%ai gpt4o
 {prompt}
+```
+
+```python
+%%ai opus
+{prompt}
+```
+
+# Further Observation: 
+Gemini summarizes, "the context transforms the poem from a potentially broader reflection on death into a deeply personal and specific act of remembrance for the lost members of the Schiffbautechnischen Gesellschaft."
+
+
+# Abstraction-Transfer task (3): 
+## Instance based rule induction
+
+## 3.a Rule application for  the poems to be analyzed:
+
+Implicit Rule: The difference between the most intuitive and the actual title gives a hint
+
+```python
+prompt = f"""
+
+Infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem with the title "Unsere Toten": 
+{poem_2.text}.
+
+According to my first reading, the most straightforward title for the following poem would be "Lorelei". The actual title is "Waldgespräch", however.
+The difference between the expectable and the actual title of the poem shows that the title gives a very specific hint as to the meaning of the poem. 
+In this case, I maintain, the title shall reveal a strong connection between romanticism (title) and horror (content of the poem).
+
+Here is the poem: Waldgespräch (1815)
+Es ist schon spät, es wird schon kalt,
+Was reit’st du einsam durch den Wald?
+Der Wald ist lang, du bist allein,
+Du schöne Braut! Ich führ’ dich heim!
+
+„Groß ist der Männer Trug und List,
+Vor Schmerz mein Herz gebrochen ist,
+Wohl irrt das Waldhorn her und hin,
+O flieh! Du weißt nicht, wer ich bin.“
+
+So reich geschmückt ist Roß und Weib,
+So wunderschön der junge Leib,
+Jetzt kenn’ ich dich – Gott steh’ mir bei!
+Du bist die Hexe Lorelei.
+
+„Du kennst mich wohl – von hohem Stein
+Schaut still mein Schloß tief in den Rhein.
+Es ist schon spät, es wird schon kalt,
+Kommst nimmermehr aus diesem Wald!“
+
+"""
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+printmd(gemini({prompt}))
+```
+
+```python
+%%ai opus
+{prompt}
+```
+
+## 3.b. Abstraction-Transfer with counterfactual title
+
+```python
+prompt = f"""
+
+Infer the implicit rule of the following interpretation. Give an explicit formulation of that rule and apply it to the poem with the title "Gefallene Geister": 
+{poem_2.text}.
+
+According to my first reading, the most straightforward title for the following poem would be "Lorelei". The actual title is "Waldgespräch", however.
+The difference between the expectable and the actual title of the poem shows that the title gives a very specific hint as to the meaning of the poem. 
+In this case, I maintain, the title shall reveal a strong connection between romanticism (title) and horror (content of the poem).
+
+Here is the poem: Waldgespräch (1815)
+Es ist schon spät, es wird schon kalt,
+Was reit’st du einsam durch den Wald?
+Der Wald ist lang, du bist allein,
+Du schöne Braut! Ich führ’ dich heim!
+
+„Groß ist der Männer Trug und List,
+Vor Schmerz mein Herz gebrochen ist,
+Wohl irrt das Waldhorn her und hin,
+O flieh! Du weißt nicht, wer ich bin.“
+
+So reich geschmückt ist Roß und Weib,
+So wunderschön der junge Leib,
+Jetzt kenn’ ich dich – Gott steh’ mir bei!
+Du bist die Hexe Lorelei.
+
+„Du kennst mich wohl – von hohem Stein
+Schaut still mein Schloß tief in den Rhein.
+Es ist schon spät, es wird schon kalt,
+Kommst nimmermehr aus diesem Wald!“
+
+"""
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+printmd(gemini({prompt}))
 ```
 
 ```python
