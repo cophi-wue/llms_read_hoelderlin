@@ -144,6 +144,50 @@ print(gemini(prompt))
 {prompt}
 ```
 
+### Level 3: Abstraction and Transfer
+
+
+In the following, we describe a (counterfactual) media-historical framing of poems from the Weimar period through the new medium of film and imply a new interpretation of the poem based on one of its metaphors. The task, then, is to examine the poem's metaphors to see if they can be understood as references to the medium of film.
+
+
+
+```python
+prompt = f"""Film changed everything for many young authors of the Weimar Republic. They invoked it in 
+hidden and obscure references (often in their metaphors) as a framing of the seemingly realistic,  in order to question it, just as others did by breaking up linguistic structures. 
+Typical of the metaleptic fracture of the literal are, for example, the mentions of light sources and backgrounds, especially natural ones, which, however, do not have their typical properties, but lose their color or some other typical attribute. 
+The function of these medial metalepsis is to replace the realistic perception with a perception 'as in the movies', to expose the artificiality of the world perception and to evoke cinematic scripts with typical genre characters and scripts.
+
+Determine whether the author, Hans Pfeifer, of the following poem, which was published 1922, can be counted 
+among this group of young authors, i.e. identify if possible such a reference to movies and discuss how the 
+interpretation of the poem then changes.
+{poem_2.text}
+"""
+```
+
+```python
+print(prompt)
+```
+
+#### GPT4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+#### Gemini 1.5
+
+```python
+printmd(gemini(prompt))
+```
+
+#### Sonnet 3.5
+
+```python
+%%ai opus
+{prompt}
+```
+
 ## Unsere Toten
 
 ```python

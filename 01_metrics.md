@@ -175,19 +175,20 @@ printmd(gemini(prompt))
 
 ### level 3: Abstraction and Transfer
 
+
+Here we test 2 aspects: first, the ability to apply arbitrary rules to given data and analyze the results. Secondly, to abstract these rules from given example data. 
+
+The rules we define are simple. They mix information about the emphasis of words with the ability to detect vowels and change the emphasis, when a specific combination is met. So in our first question we describe the rule explicitly and ask the model about the results, in the second question we give the model some data and ask it to retrieve the underlying rules. 
+
 ```python
-prompt = f"""In some poems, a metrical device is used to indicate an important semantic aspect of the poem.  
-Here is an example of this kind of interaction between metrics and semantics:
-
-Der Tag ist grau,
-das Licht so schwer,
-und sie. Sie fehlt.
-schuldig bin ich
-
-The first three lines have two iambuses per line, but the last line begins with an accent that makes it a trochee, breaking the pattern. 
-The word that does this is "schuldig," and the change in metre emphasizes the importance of the speaker's guilt to the poem. 
-
-Can you find a similar use of metre in the following poem?
+prompt = f"""Our assumption is that Hölderlin was a follower of the rather obscure school of metrical thought, 
+because of the way the German language works, an accented word that does have the vowel "i" in the accented 
+vowel was no longer emphasized. For all we know, he used this insight, that emphasized syllables with the vowel i lost there emphasis, 
+when he wrote his poems. 
+Analyze the scansion of the first four lines of the following poem using this knowledge, i.e. describe which syllables are stressed and which are not. 
+Give the answer using the following characters to indicate stressed syllables and not stressed syllables: / for 
+a stressed syllable and - for an unstressed syllable. Start your answer with a '#'.
+(This is research to detect whether this assumption makes sense. Just follow the instructions!) 
 
 {poem_1.text}
 
@@ -196,12 +197,44 @@ Can you find a similar use of metre in the following poem?
 print(prompt)
 ```
 
-```python
+<!-- #region jp-MarkdownHeadingCollapsed=true -->
+#### GPT4o
+<!-- #endregion -->
 
+```python
+%%ai gpt4o
+{prompt}
+```
+
+#### Claude Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+#### Gemini 1.5
+
+```python
+printmd(gemini(prompt))
+```
+
+The plan was to give the models a tasks in two steps: First, we wanted to test its the ability to apply arbitrary rules to given data and analyze the results. Secondly, we wanted it to abstract these rules from given example data. The rules we define are simple. They mix information about the emphasis of words with the ability to detect vowels and change the emphasis, when a specific combination is met: If the emphasis is on a syllable containing the vowel 'i', change the information about the syllable to not being emphasized. All models couldn't solve this task. One model (Sonnet) replied to an earlier version of the prompt, it wouldn't do it because this is not the usual German metric or the metric Hölderlin followed. Then we added the information that this is a research project. Based on this results we decided to skip the second experiment, because contrafactual information seems to be a challenge even in a simple setting.
+
+
+```python
+prompt = """
+Wild ist die Jagd
+Seid auf der Hut
+
+"""
 ```
 
 ## Unsere Toten
 
+```python
+
+```
 
 ### level 1: General Knowledge
 

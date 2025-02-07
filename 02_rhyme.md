@@ -103,6 +103,9 @@ As there is no rhyme in HdL, there is no meaningful expert question to be asked 
 ### Level 3: Abstraction and Transfer
 
 
+As rhyme is just a special case of assonances, see the complex probing experiments there.
+
+
 ## Unsere Toten
 
 
@@ -190,3 +193,10 @@ printmd(gemini(prompt))
 ```
 
 ### Level 3: Abstraction and Transfer
+
+
+As rhyme is just a special case of assonances, see the complex probing experiments there.
+
+```python
+
+```
