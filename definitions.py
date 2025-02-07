@@ -159,11 +159,11 @@ Do not forget! Us do not forget tomorrow!
 """
 
 source_1 = """
-Taschenbuch für das Jahr 1805. Der Liebe und Freundschaft gewidmet. Frankfurt am Mayn, bei Friedrich Wilmans 1805, S. 85.
+Friedrich Hölderlin: Die Hälfte des Lebens. In: Taschenbuch für das Jahr 1805. Der Liebe und Freundschaft gewidmet. Frankfurt am Mayn, bei Friedrich Wilmans 1805, S. 85.
 """
 
 source_2 = """
-Die deutsche Balladen-Chronik. Ein Balladenbuch von deutscher Geschichte und deutscher Art. Dortmund: Ruhfus 1922, S. xx.
+Hans Pfeifer: Unsere Toten. In: Wilhelm Uhlmann-Bixterheide (Hg.): Die deutsche Balladen-Chronik. Ein Balladenbuch von deutscher Geschichte und deutscher Art. Dortmund: Ruhfus 1922, S. 290.
 """
 
 poem_1 = Text("Friedrich Hölderlin", "Hälfte des Lebens", 1804)
