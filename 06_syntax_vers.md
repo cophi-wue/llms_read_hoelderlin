@@ -19,7 +19,7 @@ jupyter:
 ```python
 from definitions import poem_1, poem_2
 import os
-from utils import settings, gemini, ollama3, gpt4, opus, init_gemini
+from utils import settings, gemini, gpt4, opus, init_gemini, printmd
 
 %load_ext jupyter_ai_magics
 ```
@@ -37,9 +37,6 @@ settings(system_prompt, temperature)
 #defining aliases
 init_gemini()
 
-model =  ollama3()
-%ai register llama3big model
-
 model =  gpt4()
 %ai register gpt4o model
 
@@ -51,42 +48,71 @@ model = opus()
 # Syntax and Verse Structure
 
 
-## Hälfte des Lebens
+## Poem 1: Hälfte des Lebens
 
 
-Expected answer: 
+### Level 1: General Knowledge
 
-Syntax
-In der ersten Strophe harmonischer Satzbau: eine harmonisch gebaute Periode aus zwei koordinierten, parallelen, gleich langen Satzhälften, mit der Anrede in der Mitte und durch das folgende »und« verbunden.
-In der zweiten Strophe disharmonischer Satzbau: zwei unverbundene, antithetische, ungleich lange Teile: der erste Satz umfasst vier Zeilen, dann zwei kurze Sätze in den  letzten drei Zeilen, die ohne Verbindung aneinander gereiht sind. 
 
-Syntax und Versstruktur
-In der ersten Strophe decken sich immer Versende und Endes des Satzes bzw. Teilsatzes. In der zweiten Strophe dagegen haben wir eine Fülle von Enjambements. 
+On this level, we ask for a comparison of the general syntacic structure in the stanzas.
+
+Solution: 
+
+In the first stanza, harmonious sentence structure: a harmoniously constructed sequence of two coordinated, parallel, equally long sentence halves, with a form of address in the middle and connected by the following “und”.
+In the second stanza, disharmonious sentence structure: two unconnected, antithetical parts of unequal length: the first sentence comprises four lines, then two short sentences in the last three lines, which are strung together without a connection. 
 
 
 ```python
-prompt = f"""Analyze in the following poem, how the sentence structure and the vers structure relate to each other. 
-In your answer, describe first the sentence structure, secondly the vers structure and then their relationsship. 
+prompt = f"""Analyze the syntax of the following poem by comparing the sentence structures in its two stanzas. 
+First analyze each stanza individually and then compare the results for both stanzas.
+
+Here is the poem: 
+{poem_1.text}
+"""
+print(prompt)
+```
+
+### GPT4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+### Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
+## Level 2: Expert Knowledge
+
+
+On this level, we ask for the relation of syntax and verse structure.
+
+Solution:
+In the first stanza, the end of the verse and the end of the sentence or clause always coincide. 
+This is not the case in the second stanza: Phrase structure and verse structure are often not aligned, there are many enjambments. 
+
+[Task 2b: Ask for anastrophes]
+
+
+```python
+prompt = f"""Analyze in the following poem how the sentence structure and the vers structure relate to each other. Consider sentence and clause structure.
 Answer this question for each stanza separately. 
 In a final section interprete the relationsip between the two stanzas under this perspective. 
-Here is the poem: \n {poem_1.text}. \n
+
+Here is the poem:  
+{poem_1.text}. 
 """
-
-```
-
-```python
-%%ai llama3
-{prompt}
-```
-
-```python
-%%ai llama3big
-{prompt}
-```
-
-```python
-%%ai chatgpt
-{prompt}
+print(prompt)
 ```
 
 ```python
@@ -100,5 +126,104 @@ Here is the poem: \n {poem_1.text}. \n
 ```
 
 ```python
-gemini(prompt)
+printmd(gemini(prompt))
 ```
+
+## Level 3: Transfer and Abstraction
+
+
+Skipped for this pheonomenon
+
+```python
+prompt = f"""Analyze in the following poem, 
+
+Here is the poem: \n {poem_1.text}. \n
+"""
+print(prompt)
+```
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+```python
+%%ai opus
+{prompt}
+
+```
+
+```python
+printmd(gemini(prompt))
+```
+
+# Poem 2: Unsere Toten
+
+
+## Level 1: General Knowledge
+
+```python
+prompt = f"""Analyze the syntax of the following poem. Consider sentence and clause structure.
+
+Here is the poem: 
+{poem_2.text}
+"""
+print(prompt)
+```
+
+### GPT4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+### Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
+# Level 2: Expert Knowledge
+
+```python
+prompt = f"""Analyze in the following poem how the sentence structure and the vers structure relate to each other. 
+Take sentence and clause structure into account.
+
+Here is the poem:  
+{poem_2.text}. 
+"""
+print(prompt)
+```
+
+### GPT4o
+
+```python
+%%ai gpt4o
+{prompt}
+```
+
+### Sonnet
+
+```python
+%%ai opus
+{prompt}
+```
+
+### Gemini
+
+```python
+printmd(gemini(prompt))
+```
+
+# Level 3: Transfer and Abstraction
+
+
+Skipped for this phenomenon.
