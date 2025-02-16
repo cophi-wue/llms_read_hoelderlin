@@ -15,7 +15,7 @@ jupyter:
 
 # Introduction 
 
-These notebooks contain experiments for the paper `ChatGPT reads Hölderlin. How large language models 'understand' literature.` 
+These notebooks contain experiments for the paper `Do Large Language Models understand literature? Case studies and probing experiments on German poetry.` 
 
 After some pre-studies we decided not to use open source models like Llama 3.1:70b, because they didn't perform as well as the commercial models offered by OpenAI, Google and Anthropic. Llama 3.1:405b wasn't an option because we didn't have access to an infrastructure able to run it. 
 
