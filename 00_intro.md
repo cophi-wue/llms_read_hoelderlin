@@ -1,25 +1,8 @@
----
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.16.6
-  kernelspec:
-    display_name: llm_env
-    language: python
-    name: llm_env
----
 
-# Two texts
+# The Poems to be analyzed in the paper:
+
 We are using two texts for our analyses. One is a very well-known poem, 'Hälfte des Lebens' ('The middle of life') by Friedrich Hölderlin, a very famous German poet from the early 19th Century. There are many representations of this poems in German and English online and also many interpretations. 
 The other poem, 'Unsere Toten', by Hans Pfeifer, is unknown to Google at the time of writing and has not been published again after its first publication 1922. The author is also not a known figure in literary history. 
-
-
-<!-- #region jp-MarkdownHeadingCollapsed=true -->
-# The Poems to be analyzed in the paper:
 
 ## Friedrich Höderlin: Hälfte des Lebens (1804)
 
