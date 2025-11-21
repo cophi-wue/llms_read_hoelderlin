@@ -11,11 +11,13 @@ A previous version for the *Conference of Computational Literary Studies* 2025 w
 `pip install -r requirements.txt`
 You also need api keys from OpenAI, Anthropic and Google to replicate the research!
 
-## For orientation: The structure of the repository and the system of the probing experiments
+## The structure of the repository
 
 The probing experiments in this paper have four levels of order. 
 
-### I) For the first dimension, we divide the experiments into nine different types of interpretation tasks, each of which corresponds to a Jupyter notebook (NB) in this repository. These tasks include:
+### I) Interpretive Tasks
+
+For the first dimension, we divide the experiments into nine different types of interpretation tasks, each of which corresponds to a Jupyter notebook (NB) in this repository. These tasks include:
 
 `01_metrics.ipynb`
 
@@ -35,7 +37,8 @@ The probing experiments in this paper have four levels of order.
 
 `09_textmeaning.ipynb`
 
-### II) Each task is then, on the second dimension, performed for two poems, individually
+### II) Poems
+Each task is then, on the second dimension, performed for two poems, individually. 
 We are using two texts for our analyses. One is a very well-known poem, 'Hälfte des Lebens' ('The middle of life') by Friedrich Hölderlin, a very famous German poet from the early 19th Century. There are many representations of this poems in German and English online and also many interpretations. 
 The other poem, 'Unsere Toten', by Hans Pfeifer, is unknown to Google at the time of writing and has not been published again after its first publication 1922. The author is also not a known figure in literary history. 
 
@@ -112,14 +115,16 @@ The texts and several translations into English can be found in the `definitions
 
 [![Unsere_Toten.png]](https://github.com/cophi-wue/llms_read_hoelderlin/blob/0fbcee33dbc845bf5590896791dac7c52335f10e/figures/Unsere_Toten.png)
 
-#### III) Regarding the third dimension of For each of these nine tasks, we distinguish three levels of complexity of the tasks: 
+#### III) Levels of Complexity
+Regarding the third dimension of For each of these nine tasks, we distinguish three levels of complexity of the tasks: 
 1. General knowledge (corresponds to chapter 3 in the paper)
 2. Expert knowledge (corresponds to chapter 4 in the paper)
 3. Abstraction and Transfer (corresponds to chapter 5 in the paper)
 
 Specific prompts were developed for each level of complexity. The individual prompts can therefore be viewed at this level. The paper is structured into chapters corresponding to these three levels of complexity. In order to make our argumentation in the paper as concise as possible, the important results for each of the nine tasks (level I) are discussed together within the chapters on the three levels of complexity.
 
-### IV) The LLMs being investigated
+### IV) Models
+The LLMs being used and tested are:
 1. OpenAi: ChatGPT-4o (gpt-4o-2024-08-06)
 2. Anthropic Claude 3.5 Sonnet 2024-10-22
 3. Google Gemini 1.5 Pro (Sep 2024)
@@ -131,7 +136,11 @@ Our selection was based on evaluations of these models on Chatbot Arena (1.11.20
 
 The notebooks therefore each have the following identical structure: 
 
-## 1 Metrics [Level of tasks and Notebooks, beginning with `01_metrics.ipynb`)
+## The Structure of all Jupyter Notebooks
+
+### 1 The interpretive Task:
+A notebook is dedicated to each interpretation task (I). The first Notebook is on "Metrics" (`01_metrics.ipynb`), the secon on "Rhyme, etc.
+
 Each notebook starts with a code block on Configuration: Here, the LLMs are loaded and the parameter space is set.
 
 ### 1.1 Poem (1) Hölderlin: *Hälfte des Lebens*
