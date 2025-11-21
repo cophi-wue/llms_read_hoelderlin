@@ -59,7 +59,7 @@ First published in 1804 in Friedrich Wilman's "Taschenbuch für das Jahr 1805"
 
 In: Friedrich Hölderling: Gesammelte Werke. Herausgegeben von Hans Jürgen Balmes. Frankfurt am Main: Fischer, p. 163.
 
-![Hälfte_des_Lebens.jpg](attachment:a75f3e75-c6f5-4e0e-b947-3c1936210130.jpg)
+[![Hälfte_des_Lebens.jpg](attachment:a75f3e75-c6f5-4e0e-b947-3c1936210130.jpg)](https://github.com/cophi-wue/llms_read_hoelderlin/blob/main/figures/H%C3%A4lfte_des_Lebens.jpg)
 
 ## Hans Pfeifer: Unsere Toten (1922)
 
@@ -92,5 +92,5 @@ In: Uhlmann-Bixterheide, Wilhelm, ed. (1922). Die deutsche Balladen-Chronik. Ein
 
 The texts and several translations into English can be found in the `definitions.py`.
 
-![Unsere_Toten.png](attachment:88e6d156-9f9d-4f52-8d10-3e050a6846ec.png)
+[![Unsere_Toten.png](attachment:88e6d156-9f9d-4f52-8d10-3e050a6846ec.png)](https://github.com/cophi-wue/llms_read_hoelderlin/blob/main/figures/Unsere_Toten.png)
 <!-- #endregion -->
