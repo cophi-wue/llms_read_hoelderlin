@@ -5,6 +5,7 @@ Repository for notebooks used in the paper:
 Jannidis, Fotis/Kleymann, Rabea/Schröter, Julian/Zinsmeister, Heike: "Do Large Language Models understand literature? Case studies and probing experiments on German poetry." *Journal of Computational Literary Studies* 2025
 
 A previous version for the *Conference of Computational Literary Studies* 2025 was published here: https://tuprints.ulb.tu-darmstadt.de/entities/publication/1da102a8-2f12-4f0c-8294-37f8c52b6945
+DOI: 10.26083/tuprints-00030139 
 
 
 ## Installation of dependencies
@@ -139,7 +140,7 @@ The notebooks therefore each have the following identical structure:
 ## The Structure of all Jupyter Notebooks
 
 ### 1 The interpretive Task:
-A notebook is dedicated to each interpretation task (I). The first Notebook is on "Metrics" (`01_metrics.ipynb`), the secon on "Rhyme, etc.
+A notebook is dedicated to each interpretation task (I). The first Notebook is on "metrics (`01_metrics.ipynb`), the secon on rhyme (`02_rhyme.ipynb`), etc.
 
 Each notebook starts with a code block on Configuration: Here, the LLMs are loaded and the parameter space is set.
 
