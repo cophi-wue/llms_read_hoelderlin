@@ -44,14 +44,18 @@ The probing experiments in this paper have four levels of order.
 
 Specific prompts were developed for each level of complexity. The individual prompts can therefore be viewed at this level. The paper is structured into chapters corresponding to these three levels of complexity. In order to make our argumentation in the paper as concise as possible, the important results for each of the nine tasks (level I) are discussed together within the chapters on the three levels of complexity.
 
-### IV) The LLMs being investigated (`see 00_intro.ipynb`):
+### IV) The LLMs being investigated
 1. OpenAi: ChatGPT-4o (gpt-4o-2024-08-06)
 2. Anthropic Claude 3.5 Sonnet 2024-10-22
 3. Google Gemini 1.5 Pro (Sep 2024)
 
+After some pre-studies we decided not to use open source models like Llama 3.1:70b, because they didn't perform as well as the commercial models offered by OpenAI, Google and Anthropic. Llama 3.1:405b wasn't an option because we didn't have access to an infrastructure able to run it. 
+Our selection was based on evaluations of these models on Chatbot Arena (1.11.2024): https://lmarena.ai/ 
+
 The notebooks therefore each have the following identical structure: 
 
 ## 1 Metrics [Level of tasks and Notebooks, beginning with `01_metrics.ipynb`)
+Each notebook starts with a code block on Configuration: Here, the LLMs are loaded and the parameter space is set.
 
 ### 1.1 Poem (1) Hölderlin: *Hälfte des Lebens*
 
@@ -100,7 +104,7 @@ Execution of the prompt(s) for all LLMs examined
 In this way, the same structure is continued in all notebooks on the nine interpretation tasks.
 
 ## Further files
-- `00_intro.ipynb`: Information on the LLMs being used and the poems we selected for our experiments.
+- `00_intro.ipynb`: Information on the poems we selected for our experiments.
 - `all_tasks.ipynb`: A Jupyter Notebook (NB) merging all 9 NBs on the interpretive tasks omitting the LLMs' output.
 - `all_tasks.ipynb`: A Jupyter Notebook (NB) merging all 9 NBs on the interpretive tasks omitting the LLMs' output.
 - `definitions.py`: The German as well as English versions of both poems wrapped with a Text class and methods that allow to import the texts and their translations into the jupyter notebooks.
@@ -108,6 +112,6 @@ In this way, the same structure is continued in all notebooks on the nine interp
 - `utils.py`: Classes and functions for configuring and implementing access to the LLMs being used (through the LangChain modules). Here, the models are specified and the path to your personal API keys is defined.
 - `LICENCSE`
 - You will have to add in your local copy of the repository the following files: `key_openai.txt`, `key_google.txt`, `key_anthropic.txt` including your personal API keys.
-- Note that for the NB `09_textmeaning.ipynb`we refer to a poem that is under copy-right and that needs to be opened separately. For private use, you can ask us for the reps
+- Note that for the NB `09_textmeaning.ipynb`we refer to a poem that is under copy-right and that needs to be opened separately. For private use, you can ask us for the respective file `Ǹovak_Haeuser.txt` that needs to be stored in your local copy of this repository.
 
 
