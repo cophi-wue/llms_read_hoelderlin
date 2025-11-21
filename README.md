@@ -5,7 +5,8 @@ Repository for notebooks used in the paper:
 Jannidis, Fotis/Kleymann, Rabea/Schröter, Julian/Zinsmeister, Heike: "Do Large Language Models understand literature? Case studies and probing experiments on German poetry." *Journal of Computational Literary Studies* 2025
 
 A previous version for the *Conference of Computational Literary Studies* 2025 was published here: https://tuprints.ulb.tu-darmstadt.de/entities/publication/1da102a8-2f12-4f0c-8294-37f8c52b6945
-DOI: 10.26083/tuprints-00030139 
+
+DOI: https://doi.org/10.26083/tuprints-00030139 
 
 
 ## Installation of dependencies
